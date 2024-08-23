@@ -1,13 +1,4 @@
-import {
-  Image,
-  StyleSheet,
-  Platform,
-  ScrollView,
-  FlatList,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
 
 // Components
 import { ThemedText } from "@/components/ThemedText";
