@@ -9,12 +9,26 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import "react-native-reanimated";
+import { NavigationContainer } from "@react-navigation/native";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+const linking = {
+  prefixes: ["myapp://"],
+  config: {
+    screens: {
+      Tabs: {
+        screens: {
+          Home: "tabs/Home",
+        },
+      },
+    },
+  },
+} as any; // TODO: fix me
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -33,13 +47,17 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <NavigationContainer linking={linking} independent={true}>
+      <SafeAreaProvider>
+        <ThemeProvider
+          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+        >
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </NavigationContainer>
   );
 }
