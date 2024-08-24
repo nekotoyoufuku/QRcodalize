@@ -3,7 +3,7 @@ import { ROOT_DIR_FILE_PATH } from "constants/FileSystem";
 import { maybeCreateRootDir } from "./maybeCreateRootDir";
 
 export async function uploadQRcodeFile(
-  file: Pick<RNFS.UploadFileItem, "name" | "filepath">
+  file: Pick<RNFS.UploadFileItem, "name" | "filepath" | "filetype">
 ): Promise<Pick<RNFS.UploadResult, "statusCode" | "headers" | "body">> {
   await maybeCreateRootDir();
 
@@ -15,8 +15,7 @@ export async function uploadQRcodeFile(
           filename: file.name,
           name: file.name,
           filepath: file.filepath,
-          // TODO: fix me
-          filetype: "jpeg",
+          filetype: file.filetype,
         },
       ],
     });
