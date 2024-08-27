@@ -57,6 +57,15 @@ target 'QRcodalize' do
       :ccache_enabled => podfile_properties['apple.ccacheEnabled'] == 'true',
     )
 
+# @generated begin post-install-build-settings - expo prebuild (DO NOT MODIFY) sync-f4e2a1acf7da60b403fcf5c1d5d9517cb9953853
+    installer.pods_project.targets.each do |target|
+      unless target.name == 'Sentry'
+        target.build_configurations.each do |config|
+          config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
+        end
+      end
+    end
+# @generated end post-install-build-settings
     # This is necessary for Xcode 14, because it signs resource bundles by default
     # when building for devices.
     installer.target_installation_results.pod_target_installation_results
@@ -77,3 +86,24 @@ target 'QRcodalize' do
     end
   end
 end
+
+# @generated begin share-extension-target - expo prebuild (DO NOT MODIFY) sync-0b7547acef404dd095a3c67324b06cb9dc8fcd84
+target 'QRcodalizeShareExtension' do     
+  exclude = ["expo-updates"]
+  use_expo_modules!(exclude: exclude)     
+  config = use_native_modules!
+          
+  use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
+  use_frameworks! :linkage => ENV['USE_FRAMEWORKS'].to_sym if ENV['USE_FRAMEWORKS']
+          
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :hermes_enabled => podfile_properties['expo.jsEngine'] == nil || podfile_properties['expo.jsEngine'] == 'hermes',
+    # An absolute path to your application root.
+    :app_path => "#{Pod::Config.instance.installation_root}/..",
+    # Temporarily disable privacy file aggregation by default, until React
+    # Native 0.74.2 is released with fixes.
+    :privacy_file_aggregation_enabled => podfile_properties['apple.privacyManifestAggregationEnabled'] == 'true',
+  )
+end
+# @generated end share-extension-target

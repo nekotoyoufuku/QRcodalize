@@ -24,6 +24,14 @@
           }
         ],
         "NSPhotoLibraryUsageDescription": "We need access to your photo library to allow you to share images within the app."
+      },
+      "privacyManifests": {
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": ["C617.1"]
+          }
+        ]
       }
     },
     "android": {
@@ -41,15 +49,14 @@
     "plugins": [
       "expo-router",
       [
-        "expo-share-intent",
+        "expo-share-extension",
         {
-          "iosActivationRules": {
-            "NSExtensionActivationSupportsWebURLWithMaxCount": 1,
-            "NSExtensionActivationSupportsWebPageWithMaxCount": 1,
-            "NSExtensionActivationSupportsImageWithMaxCount": 1,
-            "NSExtensionActivationSupportsMovieWithMaxCount": 1
-          },
-          "androidIntentFilters": ["text/*", "image/*"]
+          "activationRules": [
+            {
+              "type": "image",
+              "max": 2
+            }
+          ]
         }
       ]
     ],

@@ -1,5 +1,4 @@
 import { StyleSheet, TouchableOpacity, FlatList, Text } from "react-native";
-import { useShareIntent } from "expo-share-intent";
 
 // Components
 import { ThemedText } from "@/components/ThemedText";
@@ -21,9 +20,6 @@ const DATA: HomeListItemType[] = [
 ];
 
 export default function HomeScreen() {
-  const { hasShareIntent, shareIntent, resetShareIntent, error } =
-    useShareIntent();
-
   const renderItem = ({ item }: { item: HomeListItemType }) => {
     return (
       <TouchableOpacity onPress={() => alert("Item pressed")}>
@@ -37,7 +33,6 @@ export default function HomeScreen() {
 
   return (
     <ThemedView wrapper style={styles.wrapper}>
-      {shareIntent?.files ? <Text>{shareIntent.files[0].fileName}</Text> : null}
       <ListHeaderComponent />
       <FlatList data={DATA} renderItem={renderItem} />
       <TouchableOpacity
