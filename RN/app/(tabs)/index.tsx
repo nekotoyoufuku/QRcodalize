@@ -1,26 +1,22 @@
 import { StyleSheet, TouchableOpacity, FlatList, Text } from "react-native";
 import { useShareIntent } from "expo-share-intent";
-import { useGetQRCodeFiles } from "@/hooks/useGetQRcodeFiles";
 
+// Hooks
+import { useGetQRCodeFiles } from "@/hooks/useGetQRCodeFiles";
 // Components
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 // Icons
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
-
-type FileType = {
-  name: string;
-  path: string;
-};
+import { IQRCodeFile } from "@/repositories/FileSystem/getQRcodeFiles";
 
 export default function HomeScreen() {
-  const { hasShareIntent, shareIntent, resetShareIntent, error } =
-    useShareIntent();
+  const { shareIntent } = useShareIntent();
 
   const { files } = useGetQRCodeFiles();
 
-  const renderItem = ({ item }: { item: FileType }) => {
+  const renderItem = ({ item }: { item: IQRCodeFile }) => {
     return (
       <TouchableOpacity onPress={() => alert("Item pressed")}>
         <ThemedView style={styles.stepContainer}>
