@@ -20,7 +20,7 @@ export async function getQRcodeFiles(): Promise<IQRCodeFile[]> {
         path: file.path,
       }));
   } catch (error) {
-    console.error(error);
+    console.error(`getQRcodeFiles: ${error}`);
 
     return [];
   }
