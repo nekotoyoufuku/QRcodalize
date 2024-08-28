@@ -1,49 +1,42 @@
 import { StyleSheet, TouchableOpacity, FlatList, Text } from "react-native";
 import { useShareIntent } from "expo-share-intent";
 
+// Hooks
+import { useGetQRCodeFiles } from "@/hooks/useGetQRCodeFiles";
 // Components
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 // Icons
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
-
-type HomeListItemType = {
-  title: string;
-};
-
-const DATA: HomeListItemType[] = [
-  { title: "Line" },
-  { title: "Facebook" },
-  { title: "Instagram" },
-  { title: "LinkedIn" },
-  { title: "Twitter" },
-];
+import { IQRCodeFile } from "@/repositories/FileSystem/getQRcodeFiles";
 
 export default function HomeScreen() {
-  const { hasShareIntent, shareIntent, resetShareIntent, error } =
-    useShareIntent();
+  const { shareIntent } = useShareIntent();
 
-  const renderItem = ({ item }: { item: HomeListItemType }) => {
+  const { files } = useGetQRCodeFiles();
+
+  const renderItem = ({ item }: { item: IQRCodeFile }) => {
     return (
       <TouchableOpacity onPress={() => alert("Item pressed")}>
         <ThemedView style={styles.stepContainer}>
-          <ThemedText>{item.title}</ThemedText>
+          <ThemedText>{item.name}</ThemedText>
           <Entypo name="chevron-right" size={24} color="black" />
         </ThemedView>
       </TouchableOpacity>
     );
   };
 
+  async function plusButtonClick() {
+    alert("Add new item");
+  }
+
   return (
     <ThemedView wrapper style={styles.wrapper}>
       {shareIntent?.files ? <Text>{shareIntent.files[0].fileName}</Text> : null}
       <ListHeaderComponent />
-      <FlatList data={DATA} renderItem={renderItem} />
-      <TouchableOpacity
-        onPress={() => alert("Add new item")}
-        style={styles.plusIcon}
-      >
+      <FlatList data={files} renderItem={renderItem} />
+      <TouchableOpacity onPress={plusButtonClick} style={styles.plusIcon}>
         <AntDesign name="pluscircle" size={48} color="black" />
       </TouchableOpacity>
     </ThemedView>
