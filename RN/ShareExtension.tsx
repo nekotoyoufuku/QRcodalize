@@ -1,14 +1,16 @@
-import {
-  type InitialProps,
-  clearAppGroupContainer,
-  close,
-  openHostApp,
-} from "expo-share-extension";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { type InitialProps, close } from "expo-share-extension";
+import { Button, StyleSheet, Text, View, TextInput } from "react-native";
+import React from "react";
+import { createQRCodeFile } from "./repositories/FileSystem/createQRCodeFile";
 
 export default function ShareExtension({ images }: InitialProps) {
+  const [text, onChangeText] = React.useState("test_file");
+
   const handleOpenHostApp = async () => {
-    openHostApp(`myapp://app.explore?images=${images}`);
+    await createQRCodeFile({
+      name: text,
+      filepath: images![0],
+    });
 
     // When you share images and videos, expo-share-extension stores them in a sharedData
     // directory in your app group's container. These files are not automatically cleaned up,
@@ -23,18 +25,10 @@ export default function ShareExtension({ images }: InitialProps) {
       >
         Media Example
       </Text>
-      {images?.length ? (
-        <Text
-          style={{
-            textAlign: "center",
-            color: "#313639",
-            fontSize: 16,
-          }}
-        >
-          Images: {JSON.stringify(images)}
-        </Text>
-      ) : null}
-      <Button title="Open Host App" onPress={handleOpenHostApp} />
+
+      <TextInput onChangeText={onChangeText} value={text} />
+
+      <Button title="Save" onPress={handleOpenHostApp} />
       <Button title="Close" onPress={close} />
     </View>
   );
