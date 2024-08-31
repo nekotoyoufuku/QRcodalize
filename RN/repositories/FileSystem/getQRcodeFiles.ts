@@ -11,6 +11,7 @@ export async function getQRcodeFiles(): Promise<IQRCodeFile[]> {
   await maybeCreateRootDir();
 
   try {
+    console.log("fetching:", ROOT_DIR_FILE_PATH);
     const result = await RNFS.readDir(ROOT_DIR_FILE_PATH);
 
     return result
