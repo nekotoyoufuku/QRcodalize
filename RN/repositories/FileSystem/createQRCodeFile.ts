@@ -1,7 +1,7 @@
 import * as RNFS from "react-native-fs";
-import { ROOT_DIR_FILE_PATH } from "constants/FileSystem";
+import { IMAGE_ASSET_DIR_PATH } from "constants/FileSystem";
 import { maybeCreateRootDir } from "./maybeCreateRootDir";
-import { breakDownURL } from "@/helper/breakDownURL";
+import { breakDownURL } from "@/helpers/breakDownURL";
 
 export async function createQRCodeFile({
   name,
@@ -13,8 +13,8 @@ export async function createQRCodeFile({
   await maybeCreateRootDir();
 
   const { extension } = breakDownURL(filepath);
-  console.log("creating to: ", ROOT_DIR_FILE_PATH);
-  const newFilePath = `${ROOT_DIR_FILE_PATH}/${name}.${extension}`;
+  console.log("creating to: ", IMAGE_ASSET_DIR_PATH);
+  const newFilePath = `${IMAGE_ASSET_DIR_PATH}/${name}.${extension}`;
 
   try {
     await RNFS.moveFile(filepath, newFilePath);
