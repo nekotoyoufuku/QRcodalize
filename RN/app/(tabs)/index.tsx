@@ -6,20 +6,16 @@ import { ThemedView } from "@/components/ThemedView";
 // Icons
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
+import { getQRcodeFiles } from "@/repositories/FileSystem/getQRcodeFiles";
+import React from "react";
 
 type HomeListItemType = {
   title: string;
 };
 
-const DATA: HomeListItemType[] = [
-  { title: "Line" },
-  { title: "Facebook" },
-  { title: "Instagram" },
-  { title: "LinkedIn" },
-  { title: "Twitter" },
-];
-
 export default function HomeScreen() {
+  const [data, setData] = React.useState<HomeListItemType[]>([]);
+
   const renderItem = ({ item }: { item: HomeListItemType }) => {
     return (
       <TouchableOpacity onPress={() => alert("Item pressed")}>
@@ -31,10 +27,22 @@ export default function HomeScreen() {
     );
   };
 
+  React.useEffect(() => {
+    (async () => {
+      const items = await getQRcodeFiles();
+
+      setData(
+        items.map((item) => ({
+          title: item.name,
+        }))
+      );
+    })();
+  }, []);
+
   return (
     <ThemedView wrapper style={styles.wrapper}>
       <ListHeaderComponent />
-      <FlatList data={DATA} renderItem={renderItem} />
+      <FlatList data={data} renderItem={renderItem} />
       <TouchableOpacity
         onPress={() => alert("Add new item")}
         style={styles.plusIcon}

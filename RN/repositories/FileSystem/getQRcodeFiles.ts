@@ -1,5 +1,5 @@
 import * as RNFS from "react-native-fs";
-import { ROOT_DIR_FILE_PATH } from "constants/FileSystem";
+import { IMAGE_ASSET_DIR_PATH } from "constants/FileSystem";
 import { maybeCreateRootDir } from "./maybeCreateRootDir";
 
 export type IQRCodeFile = {
@@ -11,7 +11,7 @@ export async function getQRcodeFiles(): Promise<IQRCodeFile[]> {
   await maybeCreateRootDir();
 
   try {
-    const result = await RNFS.readDir(ROOT_DIR_FILE_PATH);
+    const result = await RNFS.readDir(IMAGE_ASSET_DIR_PATH);
 
     return result
       .filter((res) => res.isFile)
