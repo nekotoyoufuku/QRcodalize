@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, FlatList, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
 
 // Components
 import { ThemedText } from "@/components/ThemedText";
@@ -8,17 +8,37 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import { getQRcodeFiles } from "@/repositories/FileSystem/getQRcodeFiles";
 import React from "react";
+import QrCodeBottomSheet from "@/components/BottomSheet/QrCodeBottomSheet";
+import { useSharedValue } from "react-native-reanimated";
 
 type HomeListItemType = {
   title: string;
+  url: string;
 };
 
 export default function HomeScreen() {
   const [data, setData] = React.useState<HomeListItemType[]>([]);
+  const [qrCodeUrl, setQrCodeUrl] = React.useState<string | null>(null);
+
+  // This is a shared value that can be used to animate the bottom sheet
+  const isOpen = useSharedValue(false);
+
+  const onOpen = () => {
+    isOpen.value = !isOpen.value;
+  };
+
+  const onClose = () => {
+    isOpen.value = !isOpen.value;
+  };
+
+  const onPressItem = (item: HomeListItemType) => {
+    setQrCodeUrl(item.url);
+    onOpen();
+  };
 
   const renderItem = ({ item }: { item: HomeListItemType }) => {
     return (
-      <TouchableOpacity onPress={() => alert("Item pressed")}>
+      <TouchableOpacity onPress={() => onPressItem(item)}>
         <ThemedView style={styles.stepContainer}>
           <ThemedText>{item.title}</ThemedText>
           <Entypo name="chevron-right" size={24} color="black" />
@@ -34,22 +54,27 @@ export default function HomeScreen() {
       setData(
         items.map((item) => ({
           title: item.name,
+          url: item.path,
         }))
       );
     })();
   }, []);
 
   return (
-    <ThemedView wrapper style={styles.wrapper}>
-      <ListHeaderComponent />
-      <FlatList data={data} renderItem={renderItem} />
-      <TouchableOpacity
-        onPress={() => alert("Add new item")}
-        style={styles.plusIcon}
-      >
-        <AntDesign name="pluscircle" size={48} color="black" />
-      </TouchableOpacity>
-    </ThemedView>
+    <>
+      <ThemedView wrapper style={styles.wrapper}>
+        <ListHeaderComponent />
+        <FlatList data={data} renderItem={renderItem} />
+        <TouchableOpacity onPress={onOpen} style={styles.plusIcon}>
+          <AntDesign name="pluscircle" size={48} color="black" />
+        </TouchableOpacity>
+      </ThemedView>
+      <QrCodeBottomSheet
+        isOpen={isOpen}
+        onClose={onClose}
+        qrCodeUrl={qrCodeUrl}
+      />
+    </>
   );
 }
 
