@@ -5,7 +5,7 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { ThemedText } from "@/components/ThemedText";
 import { BaseBottomSheet } from "@/components/BottomSheet/BaseBottomSheet";
 
-type QrCodeBottomSheetProps = {
+type PreviewBottomSheetProps = {
   isOpen: SharedValue<boolean>;
   qrCodeUrl: string | null;
   onClose: () => void;
@@ -14,30 +14,28 @@ type QrCodeBottomSheetProps = {
 /**
  * This is a bottom sheet that displays a QR code
  */
-export default function QrCodeBottomSheet({
+export default function PreviewBottomSheet({
   isOpen,
   qrCodeUrl,
   onClose,
-}: QrCodeBottomSheetProps) {
+}: PreviewBottomSheetProps) {
   return (
-    <>
-      <BaseBottomSheet isOpen={isOpen} onClose={onClose}>
-        {qrCodeUrl ? (
-          <View style={styles.container}>
-            <Image
-              source={{ uri: qrCodeUrl }}
-              style={{ width: 200, height: 200 }}
-            />
-          </View>
-        ) : (
-          <View style={styles.emptyUrl}>
-            <FontAwesome6 name="file-circle-question" size={60} color="black" />
-            <View style={styles.space} />
-            <ThemedText>QR code not found</ThemedText>
-          </View>
-        )}
-      </BaseBottomSheet>
-    </>
+    <BaseBottomSheet isOpen={isOpen} onClose={onClose}>
+      {qrCodeUrl ? (
+        <View style={styles.container}>
+          <Image
+            source={{ uri: qrCodeUrl }}
+            style={{ width: 200, height: 200 }}
+          />
+        </View>
+      ) : (
+        <View style={styles.emptyUrl}>
+          <FontAwesome6 name="file-circle-question" size={60} color="black" />
+          <View style={styles.space} />
+          <ThemedText>QR code not found</ThemedText>
+        </View>
+      )}
+    </BaseBottomSheet>
   );
 }
 
