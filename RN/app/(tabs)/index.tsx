@@ -1,111 +1,70 @@
-import { StyleSheet, TouchableOpacity, FlatList, View } from "react-native";
+import { Image, StyleSheet, Platform } from 'react-native';
 
-// Components
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-// Icons
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Entypo from "@expo/vector-icons/Entypo";
-import { getQRcodeFiles } from "@/repositories/FileSystem/getQRcodeFiles";
-import React from "react";
-import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
-import { useSharedValue } from "react-native-reanimated";
-import { HomeListItemType } from "@/app/(tabs)/types";
-import Button from "@/components/Button/Button";
+import { HelloWave } from '@/components/HelloWave';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
-  const [data, setData] = React.useState<HomeListItemType[]>([]);
-  const [selectedItem, setSelectedItem] =
-    React.useState<HomeListItemType | null>(null);
-
-  // This is a shared value that can be used to animate the bottom sheet
-  const isOpen = useSharedValue(false);
-
-  const onOpen = () => {
-    isOpen.value = !isOpen.value;
-  };
-
-  const onClose = () => {
-    isOpen.value = !isOpen.value;
-  };
-
-  const onPressItem = (item: HomeListItemType) => {
-    setSelectedItem(item);
-    onOpen();
-  };
-
-  const renderItem = ({ item }: { item: HomeListItemType }) => {
-    return (
-      <TouchableOpacity onPress={() => onPressItem(item)}>
-        <ThemedView style={styles.stepContainer}>
-          <ThemedText>{item.title}</ThemedText>
-          <Entypo name="chevron-right" size={24} color="black" />
-        </ThemedView>
-      </TouchableOpacity>
-    );
-  };
-
-  React.useEffect(() => {
-    (async () => {
-      const items = await getQRcodeFiles();
-
-      setData(
-        items.map((item) => ({
-          title: item.name,
-          url: item.path,
-        }))
-      );
-    })();
-  }, []);
-
   return (
-    <>
-      <ThemedView wrapper style={styles.wrapper}>
-        <ListHeaderComponent />
-        <FlatList data={data} renderItem={renderItem} />
-        <TouchableOpacity onPress={onOpen} style={styles.plusIcon}>
-          <AntDesign name="pluscircle" size={48} color="black" />
-        </TouchableOpacity>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerImage={
+        <Image
+          source={require('@/assets/images/partial-react-logo.png')}
+          style={styles.reactLogo}
+        />
+      }>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Welcome!</ThemedText>
+        <HelloWave />
       </ThemedView>
-      <PreviewBottomSheet
-        isOpen={isOpen}
-        onClose={onClose}
-        selectedItem={selectedItem}
-      />
-    </>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText>
+          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
+          Press{' '}
+          <ThemedText type="defaultSemiBold">
+            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
+          </ThemedText>{' '}
+          to open developer tools.
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText>
+          Tap the Explore tab to learn more about what's included in this starter app.
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText>
+          When you're ready, run{' '}
+          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
+          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
+          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
+          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+        </ThemedText>
+      </ThemedView>
+    </ParallaxScrollView>
   );
 }
 
-const ListHeaderComponent = () => {
-  return (
-    <ThemedView style={styles.header}>
-      <ThemedText type="title">Home</ThemedText>
-    </ThemedView>
-  );
-};
-
 const styles = StyleSheet.create({
-  header: {
-    marginBottom: 40,
-  },
-  wrapper: {
-    flex: 1,
-    justifyContent: "center",
-    padding: 20,
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   stepContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingVertical: 20,
-    paddingHorizontal: 12,
-    borderColor: "#ACACAC",
-    borderWidth: 1,
-    borderRadius: 4,
-    marginBottom: 12,
+    gap: 8,
+    marginBottom: 8,
   },
-  plusIcon: {
-    position: "absolute",
-    bottom: 28,
-    right: 40,
+  reactLogo: {
+    height: 178,
+    width: 290,
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
   },
 });

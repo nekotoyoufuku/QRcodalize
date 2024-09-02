@@ -14,25 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.amagin.QRcodalize",
-      "infoPlist": {
-        "CFBundleDocumentTypes": [
-          {
-            "CFBundleTypeName": "Images",
-            "LSHandlerRank": "Owner",
-            "LSItemContentTypes": ["public.image"]
-          }
-        ],
-        "NSPhotoLibraryUsageDescription": "We need access to your photo library to allow you to share images within the app."
-      },
-      "privacyManifests": {
-        "NSPrivacyAccessedAPITypes": [
-          {
-            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
-            "NSPrivacyAccessedAPITypeReasons": ["C617.1"]
-          }
-        ]
-      }
+      "bundleIdentifier": "com.amagin.QRcodalize"
     },
     "android": {
       "adaptiveIcon": {
@@ -51,18 +33,31 @@
       [
         "expo-share-extension",
         {
-          "height": 600,
           "activationRules": [
             {
               "type": "image",
               "max": 2
             }
+          ],
+          "excludedPackages": [
+            "expo-dev-client",
+            "expo-splash-screen",
+            "expo-updates",
+            "expo-font"
           ]
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "662d340a-7440-4dad-a9a6-2590368a137d"
+      }
     }
   }
 }
