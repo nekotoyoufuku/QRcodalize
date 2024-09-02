@@ -72,8 +72,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     zIndex: 2,
-    alignItems: "center",
-    justifyContent: "center",
   },
   backdrop: {
     ...StyleSheet.absoluteFillObject,
