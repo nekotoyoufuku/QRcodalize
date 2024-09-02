@@ -6,16 +6,15 @@ import { useSharedValue } from "react-native-reanimated";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
-import {
-  QRCodeGenerateModal,
-  OnGeneratePressArgs,
-} from "@/components/Modal/QRCodeGenerateModal";
 import { NewQRCodeBottomSheet } from "@/components/BottomSheet/NewQRCodeBottomSheet";
 import { PlusButton } from "@/components/Button/PlusButton";
 import { breakDownURL } from "@/helpers/breakDownURL";
 import { useQRCodeList } from "@/hooks/useQRCodeList";
 import { HomeListItemType } from "@/types";
-import { GenerateModal } from "@/components/Modal/GenerateModal";
+import {
+  GenerateModal,
+  OnGeneratePressArgs,
+} from "@/components/Modal/GenerateModal";
 
 export default function HomeScreen() {
   const { qrCodeList } = useQRCodeList();
@@ -25,26 +24,22 @@ export default function HomeScreen() {
     name: "",
     url: "",
   });
-  const [visibleModal, setVisibleModal] = useState<
-    "Generate" | "URL" | "Wifi" | null
-  >(null);
+
+  // Modal stats
+  const [isGenerateModalVisible, setGenerateModalVisibility] = useState(false);
 
   // Modal handlers
-  const handleModalClose = () => {
-    setVisibleModal(null);
+  const handleGeneralModalClose = () => {
+    setGenerateModalVisibility(false);
   };
   const handlePlusPress = () => {
-    setVisibleModal("Generate");
-  };
-  const handleURLPress = () => {
-    setVisibleModal("URL");
+    setGenerateModalVisibility(true);
   };
   const handleURLGeneratePress = (args: OnGeneratePressArgs) => {
-    handleModalClose();
+    handleGeneralModalClose();
     setNewQRCode(args);
     toggleNewQRCodeSheet();
   };
-  const handleWifiPress = () => {};
 
   // This is a shared value that can be used to animate the bottom sheet
   const isNewQRCodeSheetOpen = useSharedValue(false);
@@ -84,17 +79,10 @@ export default function HomeScreen() {
         <PlusButton onPress={handlePlusPress} />
       </ThemedView>
 
-      {/* Modals */}
       <GenerateModal
-        isVisible={visibleModal === "Generate"}
-        onURLPress={handleURLPress}
-        onWifiPress={handleWifiPress}
-        onClose={handleModalClose}
-      />
-      <QRCodeGenerateModal
-        isVisible={visibleModal === "URL"}
+        isVisible={isGenerateModalVisible}
         onGeneratePress={handleURLGeneratePress}
-        onClose={handleModalClose}
+        onClose={handleGeneralModalClose}
       />
 
       {/* Bottom Sheets */}
