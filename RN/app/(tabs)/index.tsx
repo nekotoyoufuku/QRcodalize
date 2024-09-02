@@ -8,17 +8,14 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import { getQRcodeFiles } from "@/repositories/FileSystem/getQRcodeFiles";
 import React from "react";
-import QrCodeBottomSheet from "@/components/BottomSheet/QrCodeBottomSheet";
+import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import { useSharedValue } from "react-native-reanimated";
-
-type HomeListItemType = {
-  title: string;
-  url: string;
-};
+import { HomeListItemType } from "@/app/(tabs)/types";
 
 export default function HomeScreen() {
   const [data, setData] = React.useState<HomeListItemType[]>([]);
-  const [qrCodeUrl, setQrCodeUrl] = React.useState<string | null>(null);
+  const [selectedItem, setSelectedItem] =
+    React.useState<HomeListItemType | null>(null);
 
   // This is a shared value that can be used to animate the bottom sheet
   const isOpen = useSharedValue(false);
@@ -32,7 +29,7 @@ export default function HomeScreen() {
   };
 
   const onPressItem = (item: HomeListItemType) => {
-    setQrCodeUrl(item.url);
+    setSelectedItem(item);
     onOpen();
   };
 
@@ -69,10 +66,10 @@ export default function HomeScreen() {
           <AntDesign name="pluscircle" size={48} color="black" />
         </TouchableOpacity>
       </ThemedView>
-      <QrCodeBottomSheet
+      <PreviewBottomSheet
         isOpen={isOpen}
         onClose={onClose}
-        qrCodeUrl={qrCodeUrl}
+        selectedItem={selectedItem}
       />
     </>
   );
