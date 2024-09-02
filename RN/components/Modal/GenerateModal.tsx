@@ -98,14 +98,15 @@ export function GenerateModal({
 
   const URLContent = (
     <>
-      <Text>Name</Text>
-      <View style={styles.spacer4} />
-      <TextInput value={name} placeholder="Instagram" onChangeText={setName} />
-      <View style={styles.spacer8} />
-
-      <Text>URL</Text>
-      <View style={styles.spacer4} />
       <TextInput
+        label="Name"
+        value={name}
+        placeholder="Instagram"
+        onChangeText={setName}
+      />
+      <View style={styles.spacer8} />
+      <TextInput
+        label="URL"
         value={url}
         placeholder="https://www.instagram.com/<your_id>/"
         onChangeText={setURL}
@@ -131,23 +132,19 @@ export function GenerateModal({
 
   const WifiContent = (
     <>
-      <Text>Name</Text>
-      <View style={styles.spacer4} />
-      <TextInput value={name} placeholder="Wifi" onChangeText={setName} />
-      <View style={styles.spacer8} />
-
-      <Text>SSID</Text>
-      <View style={styles.spacer4} />
-      <TextInput value={ssid} onChangeText={setSSID} />
-      <View style={styles.spacer8} />
-
-      <Text>Password</Text>
-      <View style={styles.spacer4} />
-      <TextInput value={password} onChangeText={setPassword} />
-
-      <Text>Encryption</Text>
-      <View style={styles.spacer4} />
       <TextInput
+        label="Name"
+        value={name}
+        placeholder="Wifi"
+        onChangeText={setName}
+      />
+      <View style={styles.spacer8} />
+      <TextInput label="SSID" value={ssid} onChangeText={setSSID} />
+      <View style={styles.spacer8} />
+      <TextInput label="Password" value={password} onChangeText={setPassword} />
+      <View style={styles.spacer8} />
+      <TextInput
+        label="Encryption"
         value={encryption}
         placeholder="WPA | WEP"
         onChangeText={setEncryption}
@@ -185,9 +182,6 @@ export function GenerateModal({
 }
 
 const styles = StyleSheet.create({
-  spacer4: {
-    height: 4,
-  },
   spacer8: {
     height: 8,
   },
