@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { SharedValue } from "react-native-reanimated";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 import { ThemedText } from "@/components/ThemedText";
 import { BaseBottomSheet } from "@/components/BottomSheet/BaseBottomSheet";
-import { HomeListItemType } from "@/app/(tabs)/types";
+import { HomeListItemType } from "@/types";
 import { breakDownURL } from "@/helpers/breakDownURL";
 
 type PreviewBottomSheetProps = {
