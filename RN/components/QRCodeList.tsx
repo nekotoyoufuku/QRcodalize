@@ -12,18 +12,20 @@ export interface QRCodeListProps {
 }
 
 export function QRCodeList({ data, onItemPress }: QRCodeListProps) {
-  const renderItem = ({ item }: { item: HomeListItemType }) => {
-    return (
-      <TouchableOpacity onPress={() => onItemPress(item)}>
-        <ThemedView style={styles.stepContainer}>
-          <ThemedText>{breakDownURL(item.title).name}</ThemedText>
-          <Entypo name="chevron-right" size={24} color="black" />
-        </ThemedView>
-      </TouchableOpacity>
-    );
-  };
+  return (
+    <FlatList<HomeListItemType>
+      data={data}
+      renderItem={({ item }) => (
+        <TouchableOpacity onPress={() => onItemPress(item)}>
+          <ThemedView style={styles.stepContainer}>
+            <ThemedText>{breakDownURL(item.title).name}</ThemedText>
 
-  return <FlatList data={data} renderItem={renderItem} />;
+            <Entypo name="chevron-right" size={24} color="black" />
+          </ThemedView>
+        </TouchableOpacity>
+      )}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
