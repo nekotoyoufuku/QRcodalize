@@ -6,21 +6,22 @@ import { useSharedValue } from "react-native-reanimated";
 
 export default function Playground() {
   return (
-    <ThemedView wrapper style={styles.wrapper}>
-      <ThemedView style={styles.header}>
-        <ThemedText type="title">Playground</ThemedText>
-      </ThemedView>
-      {/* Playground here */}
+    <>
+      <ThemedView wrapper style={styles.wrapper}>
+        <ThemedView style={styles.header}>
+          <ThemedText type="title">Playground</ThemedText>
+        </ThemedView>
+        {/* Playground here */}
 
+        {/* Playground here */}
+      </ThemedView>
       <NewQRCodeBottomSheet
         url={"https://www.linkedin.com/in/ryotogashi/"}
         name={"LinkedIn"}
         isOpen={useSharedValue(true)}
         onClose={() => {}}
       />
-
-      {/* Playground here */}
-    </ThemedView>
+    </>
   );
 }
 

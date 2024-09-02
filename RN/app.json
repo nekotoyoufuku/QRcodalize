@@ -51,6 +51,7 @@
       [
         "expo-share-extension",
         {
+          "height": 600,
           "activationRules": [
             {
               "type": "image",

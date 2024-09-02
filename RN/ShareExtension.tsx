@@ -1,7 +1,9 @@
 import { type InitialProps, close } from "expo-share-extension";
-import { Button, StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createQRCodeFile } from "./repositories/FileSystem/createQRCodeFile";
+import Button from "@/components/Button/Button";
+import TextInputField from "@/components/TextInput";
 
 export default function ShareExtension({ images }: InitialProps) {
   const [text, onChangeText] = React.useState("test_file");
@@ -16,6 +18,7 @@ export default function ShareExtension({ images }: InitialProps) {
     // directory in your app group's container. These files are not automatically cleaned up,
     // so you should delete them when you're done with them.
     // await clearAppGroupContainer()
+    close();
   };
 
   return (
@@ -26,10 +29,16 @@ export default function ShareExtension({ images }: InitialProps) {
         Media Example
       </Text>
 
-      <TextInput onChangeText={onChangeText} value={text} />
-
-      <Button title="Save" onPress={handleOpenHostApp} />
-      <Button title="Close" onPress={close} />
+      <TextInputField value={text} onChangeText={onChangeText} />
+      <View style={styles.primaryButtonWrapper}>
+        <Button title="Save" onPress={handleOpenHostApp} state="default" />
+        <Button
+          title="Close"
+          buttonType="link"
+          onPress={close}
+          state="default"
+        />
+      </View>
     </View>
   );
 }
@@ -39,8 +48,13 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 20,
     backgroundColor: "#FAF8F5",
-    alignItems: "center",
-    justifyContent: "center",
     padding: 30,
+  },
+  topInner: {},
+  primaryButtonWrapper: {
+    flex: 1,
+    marginTop: 20,
+    marginBottom: 12,
+    justifyContent: "center",
   },
 });

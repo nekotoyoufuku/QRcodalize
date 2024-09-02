@@ -10,41 +10,41 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		17651501D1B9469685102B81 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0178215FF7774902B293BA47 /* PrivacyInfo.xcprivacy */; };
+		1A7389EF69CAE54859B881D9 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2627A351B707AAA378C8146 /* ExpoModulesProvider.swift */; };
+		3C3DFD0A542A43B19B3C1526 /* QRcodalizeShareExtension.appex in Copy Files */ = {isa = PBXBuildFile; fileRef = 6575920BF33E45D3BC6F5819 /* QRcodalizeShareExtension.appex */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		5A6882C2134A3676F03AB70B /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BBEACF17885DE1E10A7D1 /* ExpoModulesProvider.swift */; };
-		7372C0836FED4924A5A5F463 /* QRcodalizeShareExtension.appex in Copy Files */ = {isa = PBXBuildFile; fileRef = E073496BC4BF4EFE9E67CE2A /* QRcodalizeShareExtension.appex */; };
-		7F1259B89BB14D3EB3118CD4 /* ShareExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C4558E887E49F995B91A51 /* ShareExtensionViewController.swift */; };
+		67290B0E7F4B4599B8CC8D75 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB898E172CBF47258576FB8C /* noop-file.swift */; };
+		7C59A799807D4B3480FABBAA /* ShareExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6347C7F153C449B3B794D6CD /* ShareExtensionViewController.swift */; };
 		96905EF65AED1B983A6B3ABC /* libPods-QRcodalize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-QRcodalize.a */; };
-		A95C90458391C718026B5394 /* libPods-QRcodalizeShareExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94577CB875023886C6C558AD /* libPods-QRcodalizeShareExtension.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
+		B6FBD097F3FA97BE418FC2C4 /* libPods-QRcodalizeShareExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E281FAAAB67E043901CA6ED /* libPods-QRcodalizeShareExtension.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		BF8CFCBCFA024D6FB88A07BE /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281954399E794E36BEC4AFAC /* noop-file.swift */; };
+		C74185EB02F94A6482EAA078 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8E9F01B7FA9C4B899F8B83E4 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		01F88E48655542DF82488FCE /* PBXContainerItemProxy */ = {
+		DB344C0B83BA4BA8BF963706 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 40E4435C29034830A321020B;
+			remoteGlobalIDString = F4CFF1E11A704DC39305D170;
 			remoteInfo = QRcodalizeShareExtension;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BF0371FE24D448F2991A64DE /* Copy Files */ = {
+		85F353A06DF040BD90E7E24E /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				7372C0836FED4924A5A5F463 /* QRcodalizeShareExtension.appex in Copy Files */,
+				3C3DFD0A542A43B19B3C1526 /* QRcodalizeShareExtension.appex in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA06175610894FCEACDC2873 /* Embed Foundation Extensions */ = {
+		D43EEC17081946908AB2FDE1 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -57,30 +57,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0178215FF7774902B293BA47 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = PrivacyInfo.xcprivacy; path = QRcodalize/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* QRcodalize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRcodalize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = QRcodalize/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = QRcodalize/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = QRcodalize/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = QRcodalize/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = QRcodalize/main.m; sourceTree = "<group>"; };
-		281954399E794E36BEC4AFAC /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "QRcodalize/noop-file.swift"; sourceTree = "<group>"; };
-		46C4558E887E49F995B91A51 /* ShareExtensionViewController.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = ShareExtensionViewController.swift; path = ShareExtensionViewController.swift; sourceTree = "<group>"; };
+		2E281FAAAB67E043901CA6ED /* libPods-QRcodalizeShareExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRcodalizeShareExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4606C3DCAA7640E6BCCF2D1A /* QRcodalizeShareExtension.entitlements */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = QRcodalizeShareExtension.entitlements; path = QRcodalizeShareExtension.entitlements; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-QRcodalize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRcodalize.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E2B8501E9D24C12BEE55C9E /* QRcodalize-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "QRcodalize-Bridging-Header.h"; path = "QRcodalize/QRcodalize-Bridging-Header.h"; sourceTree = "<group>"; };
+		6347C7F153C449B3B794D6CD /* ShareExtensionViewController.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = ShareExtensionViewController.swift; path = ShareExtensionViewController.swift; sourceTree = "<group>"; };
+		6575920BF33E45D3BC6F5819 /* QRcodalizeShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = undefined; name = QRcodalizeShareExtension.appex; path = QRcodalizeShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2E3173556A471DD304B334 /* Pods-QRcodalize.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodalize.debug.xcconfig"; path = "Target Support Files/Pods-QRcodalize/Pods-QRcodalize.debug.xcconfig"; sourceTree = "<group>"; };
-		788144A224FF482F92BF3164 /* QRcodalizeShareExtension.entitlements */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = QRcodalizeShareExtension.entitlements; path = QRcodalizeShareExtension.entitlements; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-QRcodalize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodalize.release.xcconfig"; path = "Target Support Files/Pods-QRcodalize/Pods-QRcodalize.release.xcconfig"; sourceTree = "<group>"; };
-		804BBEACF17885DE1E10A7D1 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-QRcodalizeShareExtension/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		94577CB875023886C6C558AD /* libPods-QRcodalizeShareExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRcodalizeShareExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9904012073706F065F754A1A /* Pods-QRcodalizeShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodalizeShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-QRcodalizeShareExtension/Pods-QRcodalizeShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		8E9F01B7FA9C4B899F8B83E4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = PrivacyInfo.xcprivacy; path = QRcodalize/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A63310026B0A52B4608242C5 /* Pods-QRcodalizeShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodalizeShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-QRcodalizeShareExtension/Pods-QRcodalizeShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = QRcodalize/SplashScreen.storyboard; sourceTree = "<group>"; };
-		AC71899A4E834EF9864CFE92 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = "<group>"; };
+		ABE32CF5FC554E3F90C0B90B /* QRcodalize-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "QRcodalize-Bridging-Header.h"; path = "QRcodalize/QRcodalize-Bridging-Header.h"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		E073496BC4BF4EFE9E67CE2A /* QRcodalizeShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = undefined; name = QRcodalizeShareExtension.appex; path = QRcodalizeShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		E10671E644B8932BB49D7AF4 /* Pods-QRcodalizeShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodalizeShareExtension.release.xcconfig"; path = "Target Support Files/Pods-QRcodalizeShareExtension/Pods-QRcodalizeShareExtension.release.xcconfig"; sourceTree = "<group>"; };
+		E2627A351B707AAA378C8146 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-QRcodalizeShareExtension/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		EB5D575ADFBD4EB6833BED0A /* Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-QRcodalize/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		FB898E172CBF47258576FB8C /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "QRcodalize/noop-file.swift"; sourceTree = "<group>"; };
+		FF8A1790AEAE4C80DBA6D181 /* Pods-QRcodalizeShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRcodalizeShareExtension.release.xcconfig"; path = "Target Support Files/Pods-QRcodalizeShareExtension/Pods-QRcodalizeShareExtension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,28 +92,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53EB1EF5C19D46C1ACE6DBF7 /* Frameworks */ = {
+		1A2600CFA03448B998713EB5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A95C90458391C718026B5394 /* libPods-QRcodalizeShareExtension.a in Frameworks */,
+				B6FBD097F3FA97BE418FC2C4 /* libPods-QRcodalizeShareExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07D617FF3FBA4C649D1C3077 /* QRcodalizeShareExtension */ = {
-			isa = PBXGroup;
-			children = (
-				46C4558E887E49F995B91A51 /* ShareExtensionViewController.swift */,
-				AC71899A4E834EF9864CFE92 /* Info.plist */,
-				788144A224FF482F92BF3164 /* QRcodalizeShareExtension.entitlements */,
-			);
-			name = QRcodalizeShareExtension;
-			path = QRcodalizeShareExtension;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* QRcodalize */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,9 +113,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				0178215FF7774902B293BA47 /* PrivacyInfo.xcprivacy */,
-				281954399E794E36BEC4AFAC /* noop-file.swift */,
-				5E2B8501E9D24C12BEE55C9E /* QRcodalize-Bridging-Header.h */,
+				8E9F01B7FA9C4B899F8B83E4 /* PrivacyInfo.xcprivacy */,
+				FB898E172CBF47258576FB8C /* noop-file.swift */,
+				ABE32CF5FC554E3F90C0B90B /* QRcodalize-Bridging-Header.h */,
 			);
 			name = QRcodalize;
 			sourceTree = "<group>";
@@ -136,17 +125,28 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-QRcodalize.a */,
-				94577CB875023886C6C558AD /* libPods-QRcodalizeShareExtension.a */,
+				2E281FAAAB67E043901CA6ED /* libPods-QRcodalizeShareExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		74AA0246DD5A0418C3A003C1 /* QRcodalizeShareExtension */ = {
+		6E4061289BA963B852A888A5 /* QRcodalizeShareExtension */ = {
 			isa = PBXGroup;
 			children = (
-				804BBEACF17885DE1E10A7D1 /* ExpoModulesProvider.swift */,
+				E2627A351B707AAA378C8146 /* ExpoModulesProvider.swift */,
 			);
 			name = QRcodalizeShareExtension;
+			sourceTree = "<group>";
+		};
+		7622E203BDAD492F85122036 /* QRcodalizeShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				6347C7F153C449B3B794D6CD /* ShareExtensionViewController.swift */,
+				EB5D575ADFBD4EB6833BED0A /* Info.plist */,
+				4606C3DCAA7640E6BCCF2D1A /* QRcodalizeShareExtension.entitlements */,
+			);
+			name = QRcodalizeShareExtension;
+			path = QRcodalizeShareExtension;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -165,7 +165,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				07D617FF3FBA4C649D1C3077 /* QRcodalizeShareExtension */,
+				7622E203BDAD492F85122036 /* QRcodalizeShareExtension */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -176,7 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* QRcodalize.app */,
-				E073496BC4BF4EFE9E67CE2A /* QRcodalizeShareExtension.appex */,
+				6575920BF33E45D3BC6F5819 /* QRcodalizeShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,8 +203,8 @@
 			children = (
 				6C2E3173556A471DD304B334 /* Pods-QRcodalize.debug.xcconfig */,
 				7A4D352CD337FB3A3BF06240 /* Pods-QRcodalize.release.xcconfig */,
-				9904012073706F065F754A1A /* Pods-QRcodalizeShareExtension.debug.xcconfig */,
-				E10671E644B8932BB49D7AF4 /* Pods-QRcodalizeShareExtension.release.xcconfig */,
+				A63310026B0A52B4608242C5 /* Pods-QRcodalizeShareExtension.debug.xcconfig */,
+				FF8A1790AEAE4C80DBA6D181 /* Pods-QRcodalizeShareExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				92DBD88DE9BF7D494EA9DA96 /* QRcodalize */,
-				74AA0246DD5A0418C3A003C1 /* QRcodalizeShareExtension */,
+				6E4061289BA963B852A888A5 /* QRcodalizeShareExtension */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
@@ -226,38 +226,38 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "QRcodalize" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				74B95536492FCF38D1D3FCF7 /* [Expo] Configure project */,
+				B5B498484EFC6C7503D9AE70 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				CA06175610894FCEACDC2873 /* Embed Foundation Extensions */,
-				BF0371FE24D448F2991A64DE /* Copy Files */,
-				3C537223B16D6DDA6FBECB9F /* [CP] Embed Pods Frameworks */,
+				D43EEC17081946908AB2FDE1 /* Embed Foundation Extensions */,
+				85F353A06DF040BD90E7E24E /* Copy Files */,
+				EB6A1512C8F4089C326E37D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				715EED0A1F7F48DB956C1BB2 /* PBXTargetDependency */,
+				4730514051C349E3931BD1FF /* PBXTargetDependency */,
 			);
 			name = QRcodalize;
 			productName = QRcodalize;
 			productReference = 13B07F961A680F5B00A75B9A /* QRcodalize.app */;
 			productType = "com.apple.product-type.application";
 		};
-		40E4435C29034830A321020B /* QRcodalizeShareExtension */ = {
+		F4CFF1E11A704DC39305D170 /* QRcodalizeShareExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8C7045630F624A1DAB08C46F /* Build configuration list for PBXNativeTarget "QRcodalizeShareExtension" */;
+			buildConfigurationList = B8588DC664E04C5D958A4A63 /* Build configuration list for PBXNativeTarget "QRcodalizeShareExtension" */;
 			buildPhases = (
-				E986E17C58708DB5E9E56169 /* [CP] Check Pods Manifest.lock */,
-				C528D61735084C76AFCA4751 /* Start Packager */,
-				661518401FC131BF48CF3348 /* [Expo] Configure project */,
-				45696A2561014D18B576D634 /* Sources */,
-				53EB1EF5C19D46C1ACE6DBF7 /* Frameworks */,
-				51398D75FC1949AEAAA31057 /* Resources */,
-				53245D72E01647D29F617041 /* Bundle React Native code and images */,
-				37087891EF644D293984A298 /* [CP] Copy Pods Resources */,
+				7B2F159AE4165BF7341F5E27 /* [CP] Check Pods Manifest.lock */,
+				7B24617A74FF4FF5B22597CD /* Start Packager */,
+				C04CD37C71644FD7BF73404D /* [Expo] Configure project */,
+				A5F4FF24A63A4A23A9109CE5 /* Sources */,
+				1A2600CFA03448B998713EB5 /* Frameworks */,
+				C8D6DBCB58C14083B5A7E80D /* Resources */,
+				EE1CAF6B94964F0EB9CB71DC /* Bundle React Native code and images */,
+				C32681185825E80ACA5BE32A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,7 +265,7 @@
 			);
 			name = QRcodalizeShareExtension;
 			productName = QRcodalizeShareExtension;
-			productReference = E073496BC4BF4EFE9E67CE2A /* QRcodalizeShareExtension.appex */;
+			productReference = 6575920BF33E45D3BC6F5819 /* QRcodalizeShareExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -279,7 +279,7 @@
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1250;
 					};
-					40E4435C29034830A321020B = {
+					F4CFF1E11A704DC39305D170 = {
 						LastSwiftMigration = 1250;
 					};
 				};
@@ -298,7 +298,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* QRcodalize */,
-				40E4435C29034830A321020B /* QRcodalizeShareExtension */,
+				F4CFF1E11A704DC39305D170 /* QRcodalizeShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -311,11 +311,11 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				17651501D1B9469685102B81 /* PrivacyInfo.xcprivacy in Resources */,
+				C74185EB02F94A6482EAA078 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		51398D75FC1949AEAAA31057 /* Resources */ = {
+		C8D6DBCB58C14083B5A7E80D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,105 +362,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		37087891EF644D293984A298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QRcodalizeShareExtension/Pods-QRcodalizeShareExtension-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/RCTI18nStrings.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCTI18nStrings.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRcodalizeShareExtension/Pods-QRcodalizeShareExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3C537223B16D6DDA6FBECB9F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QRcodalize/Pods-QRcodalize-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRcodalize/Pods-QRcodalize-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		53245D72E01647D29F617041 /* Bundle React Native code and images */ = {
+		7B24617A74FF4FF5B22597CD /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Bundle React Native code and images";
+			name = "Start Packager";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e; NODE_BINARY=${NODE_BINARY:-node}; REACT_NATIVE_SCRIPTS_PATH=$(\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts'\"); WITH_ENVIRONMENT=\"$REACT_NATIVE_SCRIPTS_PATH/xcode/with-environment.sh\"; REACT_NATIVE_XCODE=\"$REACT_NATIVE_SCRIPTS_PATH/react-native-xcode.sh\"; export ENTRY_FILE=index.share.js; /bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\";";
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 		};
-		661518401FC131BF48CF3348 /* [Expo] Configure project */ = {
+		7B2F159AE4165BF7341F5E27 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[Expo] Configure project";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QRcodalizeShareExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-QRcodalizeShareExtension/expo-configure-project.sh\"\n";
-		};
-		74B95536492FCF38D1D3FCF7 /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-QRcodalize/expo-configure-project.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -492,41 +428,105 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRcodalize/Pods-QRcodalize-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C528D61735084C76AFCA4751 /* Start Packager */ = {
+		B5B498484EFC6C7503D9AE70 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Start Packager";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
-		};
-		E986E17C58708DB5E9E56169 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[Expo] Configure project";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-QRcodalizeShareExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-QRcodalize/expo-configure-project.sh\"\n";
+		};
+		C04CD37C71644FD7BF73404D /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-QRcodalizeShareExtension/expo-configure-project.sh\"\n";
+		};
+		C32681185825E80ACA5BE32A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRcodalizeShareExtension/Pods-QRcodalizeShareExtension-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/RCTI18nStrings.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCTI18nStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRcodalizeShareExtension/Pods-QRcodalizeShareExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		EB6A1512C8F4089C326E37D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRcodalize/Pods-QRcodalize-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRcodalize/Pods-QRcodalize-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE1CAF6B94964F0EB9CB71DC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e; NODE_BINARY=${NODE_BINARY:-node}; REACT_NATIVE_SCRIPTS_PATH=$(\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts'\"); WITH_ENVIRONMENT=\"$REACT_NATIVE_SCRIPTS_PATH/xcode/with-environment.sh\"; REACT_NATIVE_XCODE=\"$REACT_NATIVE_SCRIPTS_PATH/react-native-xcode.sh\"; export ENTRY_FILE=index.share.js; /bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\";";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -538,26 +538,26 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				BF8CFCBCFA024D6FB88A07BE /* noop-file.swift in Sources */,
+				67290B0E7F4B4599B8CC8D75 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		45696A2561014D18B576D634 /* Sources */ = {
+		A5F4FF24A63A4A23A9109CE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F1259B89BB14D3EB3118CD4 /* ShareExtensionViewController.swift in Sources */,
-				5A6882C2134A3676F03AB70B /* ExpoModulesProvider.swift in Sources */,
+				7C59A799807D4B3480FABBAA /* ShareExtensionViewController.swift in Sources */,
+				1A7389EF69CAE54859B881D9 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		715EED0A1F7F48DB956C1BB2 /* PBXTargetDependency */ = {
+		4730514051C349E3931BD1FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 40E4435C29034830A321020B /* QRcodalizeShareExtension */;
-			targetProxy = 01F88E48655542DF82488FCE /* PBXContainerItemProxy */;
+			target = F4CFF1E11A704DC39305D170 /* QRcodalizeShareExtension */;
+			targetProxy = DB344C0B83BA4BA8BF963706 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -622,9 +622,9 @@
 			};
 			name = Release;
 		};
-		6B6254DB2EE14C0393F08572 /* Release */ = {
+		7760F1B182D542538BE80164 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E10671E644B8932BB49D7AF4 /* Pods-QRcodalizeShareExtension.release.xcconfig */;
+			baseConfigurationReference = FF8A1790AEAE4C80DBA6D181 /* Pods-QRcodalizeShareExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = QRcodalizeShareExtension/QRcodalizeShareExtension.entitlements;
@@ -642,28 +642,6 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
-		};
-		6D3914CC499645DD9F759AD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9904012073706F065F754A1A /* Pods-QRcodalizeShareExtension.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = QRcodalizeShareExtension/QRcodalizeShareExtension.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_ON_DEMAND_RESOURCES = NO;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = QRcodalizeShareExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.0.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.amagin.QRcodalize.ShareExtension;
-				PRODUCT_NAME = QRcodalizeShareExtension;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -790,6 +768,28 @@
 			};
 			name = Release;
 		};
+		FC6CFC71554C42A6BCB0F3C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A63310026B0A52B4608242C5 /* Pods-QRcodalizeShareExtension.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = QRcodalizeShareExtension/QRcodalizeShareExtension.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QRcodalizeShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amagin.QRcodalize.ShareExtension;
+				PRODUCT_NAME = QRcodalizeShareExtension;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -811,11 +811,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8C7045630F624A1DAB08C46F /* Build configuration list for PBXNativeTarget "QRcodalizeShareExtension" */ = {
+		B8588DC664E04C5D958A4A63 /* Build configuration list for PBXNativeTarget "QRcodalizeShareExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6D3914CC499645DD9F759AD3 /* Debug */,
-				6B6254DB2EE14C0393F08572 /* Release */,
+				FC6CFC71554C42A6BCB0F3C5 /* Debug */,
+				7760F1B182D542538BE80164 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
