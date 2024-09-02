@@ -1,22 +1,20 @@
-import { StyleSheet, TouchableOpacity, FlatList, View } from "react-native";
-
-// Components
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-// Icons
-import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import React from "react";
-import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
+import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
-import { useQRCodeList } from "@/hooks/useQRCodeList";
-import { HomeListItemType } from "@/types";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import {
   QRCodeGenerateModal,
   OnGeneratePressArgs,
 } from "@/components/Modal/QRCodeGenerateModal";
 import { NewQRCodeBottomSheet } from "@/components/BottomSheet/NewQRCodeBottomSheet";
+import { PlusButton } from "@/components/Button/PlusButton";
 import { breakDownURL } from "@/helpers/breakDownURL";
+import { useQRCodeList } from "@/hooks/useQRCodeList";
+import { HomeListItemType } from "@/types";
 
 export default function HomeScreen() {
   const { qrCodeList } = useQRCodeList();
@@ -74,10 +72,10 @@ export default function HomeScreen() {
     <>
       <ThemedView wrapper style={styles.wrapper}>
         <ListHeaderComponent />
+
         <FlatList data={qrCodeList} renderItem={renderItem} />
-        <TouchableOpacity onPress={onPlusPress} style={styles.plusIcon}>
-          <AntDesign name="pluscircle" size={48} color="black" />
-        </TouchableOpacity>
+
+        <PlusButton onPress={onPlusPress} />
       </ThemedView>
 
       <QRCodeGenerateModal
@@ -85,14 +83,12 @@ export default function HomeScreen() {
         onClose={onModalClose}
         onGeneratePress={handleGeneratePress}
       />
-
       <NewQRCodeBottomSheet
         name={newQRCode.name}
         url={newQRCode.url}
         isOpen={isNewQRCodeSheetOpen}
         onClose={toggleNewQRCodeSheet}
       />
-
       <PreviewBottomSheet
         isOpen={isPreviewSheetOpen}
         onClose={togglePreviewSheet}
@@ -128,10 +124,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     marginBottom: 12,
-  },
-  plusIcon: {
-    position: "absolute",
-    bottom: 28,
-    right: 40,
   },
 });
