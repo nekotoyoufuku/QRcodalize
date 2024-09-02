@@ -11,29 +11,38 @@ import React from "react";
 import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import { useSharedValue } from "react-native-reanimated";
 import { HomeListItemType } from "@/app/(tabs)/types";
+import {
+  QRCodeGenerateModal,
+  OnGeneratePressArgs,
+} from "@/components/Modal/QRCodeGenerateModal";
+import { NewQRCodeBottomSheet } from "@/components/BottomSheet/NewQRCodeBottomSheet";
 import { breakDownURL } from "@/helpers/breakDownURL";
-import { QRCodeGenerateModal } from "@/components/Modal/QRCodeGenerateModal";
 
 export default function HomeScreen() {
-  const [data, setData] = React.useState<HomeListItemType[]>([]);
+  const [list, setList] = React.useState<HomeListItemType[]>([]);
   const [selectedItem, setSelectedItem] =
     React.useState<HomeListItemType | null>(null);
+  const [newQRCode, setNewQRCode] = React.useState<OnGeneratePressArgs>({
+    name: "",
+    url: "",
+  });
   const [isModalVisible, setIsModalVisible] = React.useState(false);
 
   // This is a shared value that can be used to animate the bottom sheet
-  const isOpen = useSharedValue(false);
+  const isNewQRCodeSheetOpen = useSharedValue(false);
+  const isPreviewSheetOpen = useSharedValue(false);
 
-  const onOpen = () => {
-    isOpen.value = !isOpen.value;
+  const toggleNewQRCodeSheet = () => {
+    isNewQRCodeSheetOpen.value = !isNewQRCodeSheetOpen.value;
   };
 
-  const onClose = () => {
-    isOpen.value = !isOpen.value;
+  const togglePreviewSheet = () => {
+    isPreviewSheetOpen.value = !isPreviewSheetOpen.value;
   };
 
   const onPressItem = (item: HomeListItemType) => {
     setSelectedItem(item);
-    onOpen();
+    togglePreviewSheet();
   };
 
   const onModalClose = () => {
@@ -42,6 +51,12 @@ export default function HomeScreen() {
 
   const onPlusPress = () => {
     setIsModalVisible(true);
+  };
+
+  const handleGeneratePress = (args: OnGeneratePressArgs) => {
+    setIsModalVisible(false);
+    setNewQRCode(args);
+    toggleNewQRCodeSheet();
   };
 
   const renderItem = ({ item }: { item: HomeListItemType }) => {
@@ -59,7 +74,7 @@ export default function HomeScreen() {
     (async () => {
       const items = await getQRcodeFiles();
 
-      setData(
+      setList(
         items.map((item) => ({
           title: item.name,
           url: item.path,
@@ -72,8 +87,8 @@ export default function HomeScreen() {
     <>
       <ThemedView wrapper style={styles.wrapper}>
         <ListHeaderComponent />
-        <FlatList data={data} renderItem={renderItem} />
-        <TouchableOpacity onPress={onOpen} style={styles.plusIcon}>
+        <FlatList data={list} renderItem={renderItem} />
+        <TouchableOpacity onPress={togglePreviewSheet} style={styles.plusIcon}>
           <AntDesign
             name="pluscircle"
             size={48}
@@ -83,11 +98,22 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </ThemedView>
 
-      <QRCodeGenerateModal isVisible={isModalVisible} onClose={onModalClose} />
+      <QRCodeGenerateModal
+        isVisible={isModalVisible}
+        onClose={onModalClose}
+        onGeneratePress={handleGeneratePress}
+      />
+
+      <NewQRCodeBottomSheet
+        name={newQRCode.name}
+        url={newQRCode.url}
+        isOpen={isNewQRCodeSheetOpen}
+        onClose={toggleNewQRCodeSheet}
+      />
 
       <PreviewBottomSheet
-        isOpen={isOpen}
-        onClose={onClose}
+        isOpen={isPreviewSheetOpen}
+        onClose={togglePreviewSheet}
         selectedItem={selectedItem}
       />
     </>
