@@ -24,12 +24,14 @@ export function NewQRCodeBottomSheet({
     svgRef.current?.toDataURL(async (data: string) => {
       await generateQRCode({ filename: name, data });
     });
+
+    onClose();
   }
 
   return (
     <BaseBottomSheet isOpen={isOpen} onClose={onClose}>
       <View style={styles.container}>
-        <QRCode value={url} getRef={svgRef as any} />
+        {url ? <QRCode value={url} getRef={svgRef as any} /> : null}
 
         <Button title="Save QR Code2" onPress={saveQRCode} />
       </View>
