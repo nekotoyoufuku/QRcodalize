@@ -1,20 +1,20 @@
 import Entypo from "@expo/vector-icons/Entypo";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
-import {
-  QRCodeGenerateModal,
-  OnGeneratePressArgs,
-} from "@/components/Modal/QRCodeGenerateModal";
 import { NewQRCodeBottomSheet } from "@/components/BottomSheet/NewQRCodeBottomSheet";
 import { PlusButton } from "@/components/Button/PlusButton";
 import { breakDownURL } from "@/helpers/breakDownURL";
 import { useQRCodeList } from "@/hooks/useQRCodeList";
 import { HomeListItemType } from "@/types";
+import {
+  GenerateModal,
+  OnGeneratePressArgs,
+} from "@/components/Modal/GenerateModal";
 
 export default function HomeScreen() {
   const { qrCodeList } = useQRCodeList();
@@ -24,7 +24,22 @@ export default function HomeScreen() {
     name: "",
     url: "",
   });
-  const [isModalVisible, setIsModalVisible] = React.useState(false);
+
+  // Modal stats
+  const [isGenerateModalVisible, setGenerateModalVisibility] = useState(false);
+
+  // Modal handlers
+  const handleGeneralModalClose = () => {
+    setGenerateModalVisibility(false);
+  };
+  const handlePlusPress = () => {
+    setGenerateModalVisibility(true);
+  };
+  const handleURLGeneratePress = (args: OnGeneratePressArgs) => {
+    handleGeneralModalClose();
+    setNewQRCode(args);
+    toggleNewQRCodeSheet();
+  };
 
   // This is a shared value that can be used to animate the bottom sheet
   const isNewQRCodeSheetOpen = useSharedValue(false);
@@ -38,28 +53,14 @@ export default function HomeScreen() {
     isPreviewSheetOpen.value = !isPreviewSheetOpen.value;
   };
 
-  const onPressItem = (item: HomeListItemType) => {
+  const handlePressItem = (item: HomeListItemType) => {
     setSelectedItem(item);
     togglePreviewSheet();
   };
 
-  const onModalClose = () => {
-    setIsModalVisible(false);
-  };
-
-  const onPlusPress = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleGeneratePress = (args: OnGeneratePressArgs) => {
-    setIsModalVisible(false);
-    setNewQRCode(args);
-    toggleNewQRCodeSheet();
-  };
-
   const renderItem = ({ item }: { item: HomeListItemType }) => {
     return (
-      <TouchableOpacity onPress={() => onPressItem(item)}>
+      <TouchableOpacity onPress={() => handlePressItem(item)}>
         <ThemedView style={styles.stepContainer}>
           <ThemedText>{breakDownURL(item.title).name}</ThemedText>
           <Entypo name="chevron-right" size={24} color="black" />
@@ -75,14 +76,16 @@ export default function HomeScreen() {
 
         <FlatList data={qrCodeList} renderItem={renderItem} />
 
-        <PlusButton onPress={onPlusPress} />
+        <PlusButton onPress={handlePlusPress} />
       </ThemedView>
 
-      <QRCodeGenerateModal
-        isVisible={isModalVisible}
-        onClose={onModalClose}
-        onGeneratePress={handleGeneratePress}
+      <GenerateModal
+        isVisible={isGenerateModalVisible}
+        onGeneratePress={handleURLGeneratePress}
+        onClose={handleGeneralModalClose}
       />
+
+      {/* Bottom Sheets */}
       <NewQRCodeBottomSheet
         name={newQRCode.name}
         url={newQRCode.url}
