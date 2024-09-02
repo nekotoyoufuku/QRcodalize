@@ -15,19 +15,43 @@ export function URLModalContent({
 }: URLModalContentProps) {
   const [name, setName] = useState("");
   const [url, setURL] = useState("");
+  const [errorMessages, setErrorMessages] = useState({
+    name: "",
+    url: "",
+  });
 
   function resetForm() {
     setName("");
     setURL("");
   }
 
-  function handleURLGenerate() {
-    onGeneratePress?.({
-      name,
-      url,
+  function validateInputs() {
+    const isNameEmpty = name === "";
+    const isURLEmpty = url === "";
+
+    if (!isNameEmpty && !isURLEmpty) {
+      return true;
+    }
+
+    setErrorMessages({
+      name: isNameEmpty ? "Name is required" : "",
+      url: isURLEmpty ? "URL is required" : "",
     });
 
-    resetForm();
+    return false;
+  }
+
+  function handleURLGenerate() {
+    const isValidated = validateInputs();
+
+    if (isValidated) {
+      onGeneratePress?.({
+        name,
+        url,
+      });
+
+      resetForm();
+    }
   }
 
   function handleCancel() {
@@ -41,6 +65,7 @@ export function URLModalContent({
       <TextInput
         label="Name"
         value={name}
+        errorMessage={errorMessages.name}
         placeholder="Instagram"
         onChangeText={setName}
       />
@@ -48,6 +73,7 @@ export function URLModalContent({
       <TextInput
         label="URL"
         value={url}
+        errorMessage={errorMessages.url}
         placeholder="https://www.instagram.com/<your_id>/"
         onChangeText={setURL}
       />
