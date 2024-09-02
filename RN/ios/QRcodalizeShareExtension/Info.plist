@@ -74,6 +74,8 @@
       <key>NSExtensionPointIdentifier</key>
       <string>com.apple.share-services</string>
     </dict>
+    <key>ShareExtensionHeight</key>
+    <integer>600</integer>
     <key>HostAppScheme</key>
     <string>myapp</string>
     <key>WithFirebase</key>

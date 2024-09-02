@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, TouchableOpacity, FlatList, View } from "react-native";
 
 // Components
 import { ThemedText } from "@/components/ThemedText";
@@ -11,6 +11,7 @@ import React from "react";
 import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import { useSharedValue } from "react-native-reanimated";
 import { HomeListItemType } from "@/app/(tabs)/types";
+import Button from "@/components/Button/Button";
 
 export default function HomeScreen() {
   const [data, setData] = React.useState<HomeListItemType[]>([]);
