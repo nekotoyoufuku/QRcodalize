@@ -11,13 +11,14 @@ import React from "react";
 import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import { useSharedValue } from "react-native-reanimated";
 import { HomeListItemType } from "@/app/(tabs)/types";
-import Button from "@/components/Button/Button";
 import { breakDownURL } from "@/helpers/breakDownURL";
+import { QRCodeGenerateModal } from "@/components/Modal/QRCodeGenerateModal";
 
 export default function HomeScreen() {
   const [data, setData] = React.useState<HomeListItemType[]>([]);
   const [selectedItem, setSelectedItem] =
     React.useState<HomeListItemType | null>(null);
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
 
   // This is a shared value that can be used to animate the bottom sheet
   const isOpen = useSharedValue(false);
@@ -33,6 +34,14 @@ export default function HomeScreen() {
   const onPressItem = (item: HomeListItemType) => {
     setSelectedItem(item);
     onOpen();
+  };
+
+  const onModalClose = () => {
+    setIsModalVisible(false);
+  };
+
+  const onPlusPress = () => {
+    setIsModalVisible(true);
   };
 
   const renderItem = ({ item }: { item: HomeListItemType }) => {
@@ -65,9 +74,17 @@ export default function HomeScreen() {
         <ListHeaderComponent />
         <FlatList data={data} renderItem={renderItem} />
         <TouchableOpacity onPress={onOpen} style={styles.plusIcon}>
-          <AntDesign name="pluscircle" size={48} color="black" />
+          <AntDesign
+            name="pluscircle"
+            size={48}
+            color="black"
+            onPress={onPlusPress}
+          />
         </TouchableOpacity>
       </ThemedView>
+
+      <QRCodeGenerateModal isVisible={isModalVisible} onClose={onModalClose} />
+
       <PreviewBottomSheet
         isOpen={isOpen}
         onClose={onClose}

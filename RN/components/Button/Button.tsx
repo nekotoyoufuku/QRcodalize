@@ -13,7 +13,7 @@ type ButtonProps = {
   buttonType?: "primary" | "link";
   state: ButtonState;
   style?: StyleProp<ViewStyle>;
-  onPress: () => void;
+  onPress?: () => void;
 };
 
 type ButtonState = "default" | "loading";
