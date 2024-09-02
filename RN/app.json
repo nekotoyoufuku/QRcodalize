@@ -14,7 +14,25 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.amagin.QRcodalize"
+      "bundleIdentifier": "com.amagin.QRcodalize",
+      "infoPlist": {
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "Images",
+            "LSHandlerRank": "Owner",
+            "LSItemContentTypes": ["public.image"]
+          }
+        ],
+        "NSPhotoLibraryUsageDescription": "We need access to your photo library to allow you to share images within the app."
+      },
+      "privacyManifests": {
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": ["C617.1"]
+          }
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
