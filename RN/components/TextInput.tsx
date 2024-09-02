@@ -3,12 +3,14 @@ import { StyleProp, StyleSheet, TextInput, ViewStyle } from "react-native";
 
 type TextInputFieldProps = {
   value: string;
+  placeholder?: string;
   style?: StyleProp<ViewStyle>;
-  onChangeText: (text: string) => void;
+  onChangeText?: (text: string) => void;
 };
 
 export default function TextInputField({
   value,
+  placeholder,
   style,
   onChangeText,
 }: TextInputFieldProps) {
@@ -16,7 +18,7 @@ export default function TextInputField({
     <ThemedView style={[styles.wrapper, style]}>
       <TextInput
         style={styles.input}
-        placeholder="Type here..."
+        placeholder={placeholder}
         onChangeText={onChangeText}
         value={value}
       />
