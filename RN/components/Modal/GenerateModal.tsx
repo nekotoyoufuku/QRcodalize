@@ -31,35 +31,6 @@ export function GenerateModal({
     onClose();
   }
 
-  const generalContent = (
-    <>
-      <Button
-        title="URL"
-        buttonType="primary"
-        state="default"
-        onPress={() => changeType("URL")}
-      />
-
-      <View style={styles.spacer8} />
-
-      <Button
-        title="Wifi"
-        buttonType="primary"
-        state="default"
-        onPress={() => changeType("Wifi")}
-      />
-
-      <View style={styles.spacer8} />
-
-      <Button
-        title="Cancel"
-        buttonType="link"
-        state="default"
-        onPress={handleClose}
-      />
-    </>
-  );
-
   return (
     <BaseModal isVisible={isVisible} onClose={handleClose}>
       <View>
@@ -74,7 +45,32 @@ export function GenerateModal({
             onCancel={handleClose}
           />
         ) : (
-          generalContent
+          <>
+            <Button
+              title="URL"
+              buttonType="primary"
+              state="default"
+              onPress={() => changeType("URL")}
+            />
+
+            <View style={styles.spacer8} />
+
+            <Button
+              title="Wifi"
+              buttonType="primary"
+              state="default"
+              onPress={() => changeType("Wifi")}
+            />
+
+            <View style={styles.spacer8} />
+
+            <Button
+              title="Cancel"
+              buttonType="link"
+              state="default"
+              onPress={handleClose}
+            />
+          </>
         )}
       </View>
     </BaseModal>
