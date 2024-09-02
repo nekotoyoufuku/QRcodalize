@@ -12,6 +12,7 @@ import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import { useSharedValue } from "react-native-reanimated";
 import { HomeListItemType } from "@/app/(tabs)/types";
 import Button from "@/components/Button/Button";
+import { breakDownURL } from "@/helpers/breakDownURL";
 
 export default function HomeScreen() {
   const [data, setData] = React.useState<HomeListItemType[]>([]);
@@ -38,7 +39,7 @@ export default function HomeScreen() {
     return (
       <TouchableOpacity onPress={() => onPressItem(item)}>
         <ThemedView style={styles.stepContainer}>
-          <ThemedText>{item.title}</ThemedText>
+          <ThemedText>{breakDownURL(item.title).name}</ThemedText>
           <Entypo name="chevron-right" size={24} color="black" />
         </ThemedView>
       </TouchableOpacity>
