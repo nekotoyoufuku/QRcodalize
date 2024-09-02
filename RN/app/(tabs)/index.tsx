@@ -1,25 +1,23 @@
-import { StyleSheet, TouchableOpacity, FlatList, View } from "react-native";
+import Entypo from "@expo/vector-icons/Entypo";
+import React from "react";
+import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import { useSharedValue } from "react-native-reanimated";
 
-// Components
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-// Icons
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Entypo from "@expo/vector-icons/Entypo";
-import { getQRcodeFiles } from "@/repositories/FileSystem/getQRcodeFiles";
-import React from "react";
 import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
-import { useSharedValue } from "react-native-reanimated";
-import { HomeListItemType } from "@/app/(tabs)/types";
 import {
   QRCodeGenerateModal,
   OnGeneratePressArgs,
 } from "@/components/Modal/QRCodeGenerateModal";
 import { NewQRCodeBottomSheet } from "@/components/BottomSheet/NewQRCodeBottomSheet";
+import { PlusButton } from "@/components/Button/PlusButton";
 import { breakDownURL } from "@/helpers/breakDownURL";
+import { useQRCodeList } from "@/hooks/useQRCodeList";
+import { HomeListItemType } from "@/types";
 
 export default function HomeScreen() {
-  const [list, setList] = React.useState<HomeListItemType[]>([]);
+  const { qrCodeList } = useQRCodeList();
   const [selectedItem, setSelectedItem] =
     React.useState<HomeListItemType | null>(null);
   const [newQRCode, setNewQRCode] = React.useState<OnGeneratePressArgs>({
@@ -70,32 +68,14 @@ export default function HomeScreen() {
     );
   };
 
-  React.useEffect(() => {
-    (async () => {
-      const items = await getQRcodeFiles();
-
-      setList(
-        items.map((item) => ({
-          title: item.name,
-          url: item.path,
-        }))
-      );
-    })();
-  }, []);
-
   return (
     <>
       <ThemedView wrapper style={styles.wrapper}>
         <ListHeaderComponent />
-        <FlatList data={list} renderItem={renderItem} />
-        <TouchableOpacity onPress={togglePreviewSheet} style={styles.plusIcon}>
-          <AntDesign
-            name="pluscircle"
-            size={48}
-            color="black"
-            onPress={onPlusPress}
-          />
-        </TouchableOpacity>
+
+        <FlatList data={qrCodeList} renderItem={renderItem} />
+
+        <PlusButton onPress={onPlusPress} />
       </ThemedView>
 
       <QRCodeGenerateModal
@@ -103,14 +83,12 @@ export default function HomeScreen() {
         onClose={onModalClose}
         onGeneratePress={handleGeneratePress}
       />
-
       <NewQRCodeBottomSheet
         name={newQRCode.name}
         url={newQRCode.url}
         isOpen={isNewQRCodeSheetOpen}
         onClose={toggleNewQRCodeSheet}
       />
-
       <PreviewBottomSheet
         isOpen={isPreviewSheetOpen}
         onClose={togglePreviewSheet}
@@ -146,10 +124,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     marginBottom: 12,
-  },
-  plusIcon: {
-    position: "absolute",
-    bottom: 28,
-    right: 40,
   },
 });
