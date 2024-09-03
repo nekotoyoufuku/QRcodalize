@@ -1,9 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { type InitialProps, close } from "expo-share-extension";
 
 import { createQRCodeFile } from "@/repositories/FileSystem/createQRCodeFile";
-import Button from "./components/Button/Button";
 import TextInputField from "./components/TextInput";
 
 export default function ShareExtension({ images }: InitialProps) {
@@ -27,15 +32,25 @@ export default function ShareExtension({ images }: InitialProps) {
       <Text style={styles.titleText}>Media Example</Text>
 
       <Text style={styles.labelText}>Enter QR code name : </Text>
-      <TextInputField value={text} onChangeText={onChangeText} />
-      <View style={styles.primaryButtonWrapper}>
-        <Button title="Save" onPress={handleOpenHostApp} state="default" />
-        <Button
-          title="Close"
-          buttonType="link"
-          onPress={close}
-          state="default"
+      <View style={styles.wrapper}>
+        <TextInput
+          style={styles.input}
+          placeholder="Type here..."
+          onChangeText={onChangeText}
+          value={text}
         />
+      </View>
+      <View style={styles.primaryButtonWrapper}>
+        <TouchableOpacity
+          onPress={handleOpenHostApp}
+          style={styles.primaryButton}
+        >
+          <Text style={styles.buttonText}>Save</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={close} style={styles.linkContainer}>
+          <Text style={styles.linkButtonText}>Close</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -62,5 +77,33 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 12,
     justifyContent: "center",
+  },
+  primaryButton: {
+    backgroundColor: "#007bff",
+    padding: 12,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  linkContainer: {
+    padding: 12,
+    alignItems: "center",
+  },
+  buttonText: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: "600",
+    color: "#fff",
+  },
+  linkButtonText: {
+    color: "#007bff",
+  },
+  wrapper: {
+    backgroundColor: "#f9f9f9",
+    borderWidth: 1,
+    borderColor: "#A9A9A9",
+    borderRadius: 10,
+  },
+  input: {
+    padding: 16,
   },
 });
