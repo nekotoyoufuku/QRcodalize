@@ -3,8 +3,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { type InitialProps, close } from "expo-share-extension";
 
 // import { createQRCodeFile } from "@/repositories/FileSystem/createQRCodeFile";
-// import Button from "@/components/Button/Button";
-// import TextInputField from "@/components/TextInput";
+import Button from "./components/Button/Button";
+import TextInputField from "./components/TextInput";
 
 export default function ShareExtension({ images }: InitialProps) {
   const [text, onChangeText] = React.useState("test_file");
@@ -37,7 +37,7 @@ export default function ShareExtension({ images }: InitialProps) {
           Close
         </Text>
       </TouchableOpacity>
-      {/* <TextInputField value={text} onChangeText={onChangeText} />
+      <TextInputField value={text} onChangeText={onChangeText} />
       <View style={styles.primaryButtonWrapper}>
         <Button title="Save" onPress={handleOpenHostApp} state="default" />
         <Button
@@ -46,7 +46,7 @@ export default function ShareExtension({ images }: InitialProps) {
           onPress={close}
           state="default"
         />
-      </View> */}
+      </View>
     </View>
   );
 }
