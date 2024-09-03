@@ -1,6 +1,7 @@
 import TextInput from "@/components/TextInput";
 import Button from "@/components/Button/Button";
-import { StyleSheet, View } from "react-native";
+import { EncryptionSelectButtons } from "@/components/Button/EncryptionSelectButtons";
+import { StyleSheet, Text, View } from "react-native";
 import { useState } from "react";
 import {
   generateWifiQRCodeString,
@@ -20,33 +21,25 @@ export function WifiModalContent({
   const [name, setName] = useState("Wifi");
   const [ssid, setSSID] = useState("");
   const [password, setPassword] = useState("");
-  const [encryption, setEncryption] = useState("");
+  const [encryption, setEncryption] = useState<"WPA" | "WEP">("WPA");
   const [errorMessages, setErrorMessages] = useState({
     name: "",
     ssid: "",
     password: "",
-    encryption: "",
   });
 
   function resetForm() {
     setName("");
     setSSID("");
     setPassword("");
-    setEncryption("");
   }
 
   function validateInputs() {
     const isNameEmpty = name === "";
     const isSSIDEmpty = ssid === "";
     const isPasswordEmpty = password === "";
-    const isEncryptionIncorrect = encryption !== "WPA" && encryption !== "WEP";
 
-    if (
-      !isNameEmpty &&
-      !isSSIDEmpty &&
-      !isPasswordEmpty &&
-      !isEncryptionIncorrect
-    ) {
+    if (!isNameEmpty && !isSSIDEmpty && !isPasswordEmpty) {
       return true;
     }
 
@@ -54,12 +47,13 @@ export function WifiModalContent({
       name: isNameEmpty ? "Name is required" : "",
       ssid: isSSIDEmpty ? "SSID is required" : "",
       password: isPasswordEmpty ? "Password is required" : "",
-      encryption: isEncryptionIncorrect
-        ? "Encryption must be either WPA or WEP"
-        : "",
     });
 
     return false;
+  }
+
+  function handleEncriptionPress(value: "WPA" | "WEP") {
+    setEncryption(value);
   }
 
   function handleWifiGenerate() {
@@ -109,13 +103,9 @@ export function WifiModalContent({
         onChangeText={setPassword}
       />
       <View style={styles.spacer8} />
-      <TextInput
-        label="Encryption"
-        errorMessage={errorMessages.encryption}
-        value={encryption}
-        placeholder="WPA | WEP"
-        onChangeText={setEncryption}
-      />
+      <Text>engription</Text>
+      <View style={styles.spacer4} />
+      <EncryptionSelectButtons onPress={handleEncriptionPress} />
 
       <View style={styles.spacer32} />
 
@@ -137,6 +127,9 @@ export function WifiModalContent({
 }
 
 const styles = StyleSheet.create({
+  spacer4: {
+    height: 4,
+  },
   spacer8: {
     height: 8,
   },
