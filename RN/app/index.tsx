@@ -8,11 +8,8 @@ import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import { NewQRCodeBottomSheet } from "@/components/BottomSheet/NewQRCodeBottomSheet";
 import { PlusButton } from "@/components/Button/PlusButton";
 import { useQRCodeList } from "@/hooks/useQRCodeList";
-import { HomeListItemType } from "@/types";
-import {
-  GenerateModal,
-  OnGeneratePressArgs,
-} from "@/components/Modal/GenerateModal";
+import { HomeListItemType, OnGeneratePressArgs } from "@/types";
+import { GenerateModal } from "@/components/Modal/GenerateModal";
 import { QRCodeList } from "@/components/QRCodeList";
 
 export default function HomeScreen() {
