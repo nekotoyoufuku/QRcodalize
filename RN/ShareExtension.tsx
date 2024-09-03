@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { type InitialProps, close } from "expo-share-extension";
 
-// import { createQRCodeFile } from "@/repositories/FileSystem/createQRCodeFile";
+import { createQRCodeFile } from "@/repositories/FileSystem/createQRCodeFile";
 import Button from "./components/Button/Button";
 import TextInputField from "./components/TextInput";
 
@@ -10,10 +10,10 @@ export default function ShareExtension({ images }: InitialProps) {
   const [text, onChangeText] = React.useState("test_file");
 
   const handleOpenHostApp = async () => {
-    //   await createQRCodeFile({
-    //     name: text,
-    //     filepath: images![0],
-    //   });
+    await createQRCodeFile({
+      name: text,
+      filepath: images![0],
+    });
 
     //   // When you share images and videos, expo-share-extension stores them in a sharedData
     //   // directory in your app group's container. These files are not automatically cleaned up,
@@ -24,19 +24,9 @@ export default function ShareExtension({ images }: InitialProps) {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={{ fontFamily: "Inter-Black", fontSize: 24, marginBottom: 10 }}
-      >
-        Media Example
-      </Text>
+      <Text style={styles.titleText}>Media Example</Text>
 
-      <TouchableOpacity onPress={handleOpenHostApp}>
-        <Text
-          style={{ fontFamily: "Inter-Black", fontSize: 24, marginBottom: 10 }}
-        >
-          Close
-        </Text>
-      </TouchableOpacity>
+      <Text style={styles.labelText}>Enter QR code name : </Text>
       <TextInputField value={text} onChangeText={onChangeText} />
       <View style={styles.primaryButtonWrapper}>
         <Button title="Save" onPress={handleOpenHostApp} state="default" />
@@ -58,7 +48,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#FAF8F5",
     padding: 30,
   },
-  topInner: {},
+  titleText: {
+    fontSize: 24,
+    marginBottom: 40,
+    textAlign: "center",
+  },
+  labelText: {
+    fontSize: 16,
+    marginBottom: 12,
+  },
   primaryButtonWrapper: {
     flex: 1,
     marginTop: 20,
