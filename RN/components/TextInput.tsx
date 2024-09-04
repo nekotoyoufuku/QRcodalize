@@ -1,8 +1,18 @@
+import {
+  StyleProp,
+  StyleSheet,
+  TextInput,
+  Text,
+  View,
+  ViewStyle,
+} from "react-native";
 import { ThemedView } from "../components/ThemedView";
-import { StyleProp, StyleSheet, TextInput, ViewStyle } from "react-native";
 
 type TextInputFieldProps = {
   value: string;
+  label?: string;
+  errorMessage?: string;
+  placeholder?: string;
   style?: StyleProp<ViewStyle>;
   onChangeText: (text: string) => void;
 };
