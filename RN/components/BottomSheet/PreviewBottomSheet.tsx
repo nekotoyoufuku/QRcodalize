@@ -4,8 +4,8 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 import { ThemedText } from "@/components/ThemedText";
 import { BaseBottomSheet } from "@/components/BottomSheet/BaseBottomSheet";
+import { HomeListItemType } from "@/types";
 import Button from "@/components/Button/Button";
-import { HomeListItemType } from "@/app/(tabs)/types";
 import { breakDownURL } from "@/helpers/breakDownURL";
 import { deleteFile } from "@/repositories/FileSystem/deleteFile";
 

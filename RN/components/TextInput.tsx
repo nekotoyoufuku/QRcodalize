@@ -1,8 +1,17 @@
 import { ThemedView } from "@/components/ThemedView";
-import { StyleProp, StyleSheet, TextInput, ViewStyle } from "react-native";
+import {
+  StyleProp,
+  StyleSheet,
+  TextInput,
+  Text,
+  View,
+  ViewStyle,
+} from "react-native";
 
 type TextInputFieldProps = {
   value: string;
+  label?: string;
+  errorMessage?: string;
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
   onChangeText?: (text: string) => void;
@@ -10,19 +19,37 @@ type TextInputFieldProps = {
 
 export default function TextInputField({
   value,
+  label,
+  errorMessage,
   placeholder,
   style,
   onChangeText,
 }: TextInputFieldProps) {
   return (
-    <ThemedView style={[styles.wrapper, style]}>
-      <TextInput
-        style={styles.input}
-        placeholder={placeholder}
-        onChangeText={onChangeText}
-        value={value}
-      />
-    </ThemedView>
+    <>
+      {label ? (
+        <>
+          <Text>{label}</Text>
+          <View style={styles.spacer4} />
+        </>
+      ) : null}
+
+      <ThemedView style={[styles.wrapper, style]}>
+        <TextInput
+          style={styles.input}
+          placeholder={placeholder}
+          onChangeText={onChangeText}
+          value={value}
+        />
+      </ThemedView>
+
+      {errorMessage ? (
+        <>
+          <View style={styles.spacer2} />
+          <Text style={styles.errorMessage}>{errorMessage}</Text>
+        </>
+      ) : null}
+    </>
   );
 }
 
@@ -35,5 +62,15 @@ const styles = StyleSheet.create({
   },
   input: {
     padding: 16,
+  },
+  spacer2: {
+    height: 2,
+  },
+  spacer4: {
+    height: 4,
+  },
+  errorMessage: {
+    color: "red",
+    fontSize: 12,
   },
 });

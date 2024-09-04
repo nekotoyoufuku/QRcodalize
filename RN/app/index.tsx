@@ -1,6 +1,5 @@
-import Entypo from "@expo/vector-icons/Entypo";
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
 
 import { ThemedText } from "@/components/ThemedText";
@@ -8,13 +7,10 @@ import { ThemedView } from "@/components/ThemedView";
 import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import { NewQRCodeBottomSheet } from "@/components/BottomSheet/NewQRCodeBottomSheet";
 import { PlusButton } from "@/components/Button/PlusButton";
-import { breakDownURL } from "@/helpers/breakDownURL";
 import { useQRCodeList } from "@/hooks/useQRCodeList";
-import { HomeListItemType } from "@/types";
-import {
-  GenerateModal,
-  OnGeneratePressArgs,
-} from "@/components/Modal/GenerateModal";
+import { HomeListItemType, OnGeneratePressArgs } from "@/types";
+import { GenerateModal } from "@/components/Modal/GenerateModal";
+import { QRCodeList } from "@/components/QRCodeList";
 
 export default function HomeScreen() {
   const { qrCodeList } = useQRCodeList();
@@ -58,23 +54,14 @@ export default function HomeScreen() {
     togglePreviewSheet();
   };
 
-  const renderItem = ({ item }: { item: HomeListItemType }) => {
-    return (
-      <TouchableOpacity onPress={() => handlePressItem(item)}>
-        <ThemedView style={styles.stepContainer}>
-          <ThemedText>{breakDownURL(item.title).name}</ThemedText>
-          <Entypo name="chevron-right" size={24} color="black" />
-        </ThemedView>
-      </TouchableOpacity>
-    );
-  };
-
   return (
     <>
       <ThemedView wrapper style={styles.wrapper}>
-        <ListHeaderComponent />
+        <ThemedView style={styles.header}>
+          <ThemedText type="title">QR code list</ThemedText>
+        </ThemedView>
 
-        <FlatList data={qrCodeList} renderItem={renderItem} />
+        <QRCodeList data={qrCodeList} onItemPress={handlePressItem} />
 
         <PlusButton onPress={handlePlusPress} />
       </ThemedView>
@@ -101,14 +88,6 @@ export default function HomeScreen() {
   );
 }
 
-const ListHeaderComponent = () => {
-  return (
-    <ThemedView style={styles.header}>
-      <ThemedText type="title">Home</ThemedText>
-    </ThemedView>
-  );
-};
-
 const styles = StyleSheet.create({
   header: {
     marginBottom: 40,
@@ -117,15 +96,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 20,
-  },
-  stepContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingVertical: 20,
-    paddingHorizontal: 12,
-    borderColor: "#ACACAC",
-    borderWidth: 1,
-    borderRadius: 4,
-    marginBottom: 12,
   },
 });
