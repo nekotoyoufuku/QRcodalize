@@ -1,5 +1,6 @@
 import * as RNFS from "react-native-fs";
-import { IMAGE_ASSET_DIR_PATH } from "constants/FileSystem";
+import { IMAGE_ASSET_DIR_PATH } from "../../constants/FileSystem";
+
 import { maybeCreateRootDir } from "./maybeCreateRootDir";
 
 export type IQRCodeFile = {

@@ -1,5 +1,5 @@
 import * as RNFS from "react-native-fs";
-import { IMAGE_ASSET_DIR_PATH } from "constants/FileSystem";
+import { IMAGE_ASSET_DIR_PATH } from "../../constants/FileSystem";
 
 export async function maybeCreateRootDir(): Promise<void> {
   if (await RNFS.exists(IMAGE_ASSET_DIR_PATH)) {

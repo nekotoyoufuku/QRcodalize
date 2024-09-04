@@ -1,4 +1,4 @@
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedView } from "../components/ThemedView";
 import { StyleProp, StyleSheet, TextInput, ViewStyle } from "react-native";
 
 type TextInputFieldProps = {

@@ -1,14 +1,8 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
 import { type InitialProps, close } from "expo-share-extension";
-
-import { createQRCodeFile } from "@/repositories/FileSystem/createQRCodeFile";
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { createQRCodeFile } from "./repositories/FileSystem/createQRCodeFile";
+import Button from "./components/Button/Button";
 import TextInputField from "./components/TextInput";
 
 export default function ShareExtension({ images }: InitialProps) {
@@ -20,37 +14,30 @@ export default function ShareExtension({ images }: InitialProps) {
       filepath: images![0],
     });
 
-    //   // When you share images and videos, expo-share-extension stores them in a sharedData
-    //   // directory in your app group's container. These files are not automatically cleaned up,
-    //   // so you should delete them when you're done with them.
-    //   // await clearAppGroupContainer()
+    // When you share images and videos, expo-share-extension stores them in a sharedData
+    // directory in your app group's container. These files are not automatically cleaned up,
+    // so you should delete them when you're done with them.
+    // await clearAppGroupContainer()
     close();
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>Media Example</Text>
+      <Text
+        style={{ fontFamily: "Inter-Black", fontSize: 24, marginBottom: 10 }}
+      >
+        Media Example
+      </Text>
 
-      <Text style={styles.labelText}>Enter QR code name : </Text>
-      <View style={styles.wrapper}>
-        <TextInput
-          style={styles.input}
-          placeholder="Type here..."
-          onChangeText={onChangeText}
-          value={text}
-        />
-      </View>
+      <TextInputField value={text} onChangeText={onChangeText} />
       <View style={styles.primaryButtonWrapper}>
-        <TouchableOpacity
-          onPress={handleOpenHostApp}
-          style={styles.primaryButton}
-        >
-          <Text style={styles.buttonText}>Save</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={close} style={styles.linkContainer}>
-          <Text style={styles.linkButtonText}>Close</Text>
-        </TouchableOpacity>
+        <Button title="Save" onPress={handleOpenHostApp} state="default" />
+        <Button
+          title="Close"
+          buttonType="link"
+          onPress={close}
+          state="default"
+        />
       </View>
     </View>
   );
@@ -63,47 +50,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#FAF8F5",
     padding: 30,
   },
-  titleText: {
-    fontSize: 24,
-    marginBottom: 40,
-    textAlign: "center",
-  },
-  labelText: {
-    fontSize: 16,
-    marginBottom: 12,
-  },
+  topInner: {},
   primaryButtonWrapper: {
     flex: 1,
     marginTop: 20,
     marginBottom: 12,
     justifyContent: "center",
-  },
-  primaryButton: {
-    backgroundColor: "#007bff",
-    padding: 12,
-    borderRadius: 8,
-    alignItems: "center",
-  },
-  linkContainer: {
-    padding: 12,
-    alignItems: "center",
-  },
-  buttonText: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontWeight: "600",
-    color: "#fff",
-  },
-  linkButtonText: {
-    color: "#007bff",
-  },
-  wrapper: {
-    backgroundColor: "#f9f9f9",
-    borderWidth: 1,
-    borderColor: "#A9A9A9",
-    borderRadius: 10,
-  },
-  input: {
-    padding: 16,
   },
 });
