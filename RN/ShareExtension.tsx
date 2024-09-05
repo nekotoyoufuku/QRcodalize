@@ -6,30 +6,50 @@ import Button from "./components/Button/Button";
 import TextInputField from "./components/TextInput";
 
 export default function ShareExtension({ images }: InitialProps) {
-  const [text, onChangeText] = React.useState("test_file");
+  const [text, onChangeText] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
+
+  function resetForm() {
+    onChangeText("");
+  }
+
+  const validateInput = () => {
+    if (text === "") {
+      setErrorMessage("Name is required");
+
+      return false;
+    }
+
+    return true;
+  };
 
   const handleOpenHostApp = async () => {
-    await createQRCodeFile({
-      name: text,
-      filepath: images![0],
-    });
+    const isValidated = validateInput();
 
-    // When you share images and videos, expo-share-extension stores them in a sharedData
-    // directory in your app group's container. These files are not automatically cleaned up,
-    // so you should delete them when you're done with them.
-    // await clearAppGroupContainer()
-    close();
+    if (isValidated) {
+      await createQRCodeFile({
+        name: text,
+        filepath: images![0],
+      });
+
+      resetForm();
+
+      // When you share images and videos, expo-share-extension stores them in a sharedData
+      // directory in your app group's container. These files are not automatically cleaned up,
+      // so you should delete them when you're done with them.
+      // await clearAppGroupContainer()
+      close();
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text
-        style={{ fontFamily: "Inter-Black", fontSize: 24, marginBottom: 10 }}
-      >
-        Media Example
-      </Text>
-
-      <TextInputField value={text} onChangeText={onChangeText} />
+      <TextInputField
+        label="Name"
+        value={text}
+        errorMessage={errorMessage}
+        onChangeText={onChangeText}
+      />
       <View style={styles.primaryButtonWrapper}>
         <Button title="Save" onPress={handleOpenHostApp} state="default" />
         <Button
