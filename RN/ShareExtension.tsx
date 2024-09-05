@@ -2,8 +2,8 @@ import { type InitialProps, close } from "expo-share-extension";
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createQRCodeFile } from "./repositories/FileSystem/createQRCodeFile";
-import Button from "@/components/Button/Button";
-import TextInputField from "@/components/TextInput";
+import Button from "./components/Button/Button";
+import TextInputField from "./components/TextInput";
 
 export default function ShareExtension({ images }: InitialProps) {
   const [text, onChangeText] = React.useState("test_file");

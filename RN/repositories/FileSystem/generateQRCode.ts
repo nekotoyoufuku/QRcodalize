@@ -1,6 +1,6 @@
 import { maybeCreateRootDir } from "./maybeCreateRootDir";
 import * as RNFS from "react-native-fs";
-import { IMAGE_ASSET_DIR_PATH } from "@/constants/FileSystem";
+import { IMAGE_ASSET_DIR_PATH } from "../../constants/FileSystem";
 
 export async function generateQRCode({
   filename,

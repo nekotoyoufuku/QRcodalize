@@ -49,20 +49,40 @@
     "plugins": [
       "expo-router",
       [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/SpaceMono-Regular.ttf"]
+        }
+      ],
+      [
         "expo-share-extension",
         {
-          "height": 600,
+          "height": 500,
           "activationRules": [
             {
               "type": "image",
               "max": 2
             }
+          ],
+          "excludedPackages": [
+            "expo-dev-client",
+            "expo-splash-screen",
+            "expo-updates",
+            "expo-font"
           ]
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "662d340a-7440-4dad-a9a6-2590368a137d"
+      }
     }
   }
 }
