@@ -83,11 +83,13 @@ export default function HomeScreen() {
         onClose={toggleNewQRCodeSheet}
         onNewQRCodeCreated={onNewQRCodeCreated}
       />
-      <PreviewBottomSheet
-        isOpen={isPreviewSheetOpen}
-        onClose={togglePreviewSheet}
-        selectedItem={selectedItem}
-      />
+      {selectedItem ? (
+        <PreviewBottomSheet
+          isOpen={isPreviewSheetOpen}
+          onClose={togglePreviewSheet}
+          selectedItem={selectedItem}
+        />
+      ) : null}
     </>
   );
 }
