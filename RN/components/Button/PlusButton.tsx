@@ -14,7 +14,7 @@ export function PlusButton({ onPress }: { onPress?: () => void }) {
 const styles = StyleSheet.create({
   plusIcon: {
     position: "absolute",
-    bottom: 28,
+    bottom: 60,
     right: 40,
   },
 });
