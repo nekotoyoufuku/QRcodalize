@@ -11,6 +11,7 @@ import { useQRCodeList } from "@/hooks/useQRCodeList";
 import { HomeListItemType, OnGeneratePressArgs } from "@/types";
 import { GenerateModal } from "@/components/Modal/GenerateModal";
 import { QRCodeList } from "@/components/QRCodeList";
+import { useAppState } from "@/hooks/useAppState";
 
 export default function HomeScreen() {
   const { qrCodeList, updateList } = useQRCodeList();
@@ -56,6 +57,12 @@ export default function HomeScreen() {
     setSelectedItem(item);
     togglePreviewSheet();
   };
+
+  useAppState({
+    onAppActive: () => {
+      updateList();
+    },
+  });
 
   return (
     <>
