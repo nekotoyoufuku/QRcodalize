@@ -10,6 +10,7 @@ type NewQRCodeBottomSheetProps = {
   url: string;
   isOpen: SharedValue<boolean>;
   onClose: () => void;
+  onNewQRCodeCreated?: () => void;
 };
 
 export function NewQRCodeBottomSheet({
@@ -17,12 +18,15 @@ export function NewQRCodeBottomSheet({
   url,
   isOpen,
   onClose,
+  onNewQRCodeCreated,
 }: NewQRCodeBottomSheetProps) {
   const svgRef = useRef<any>(null);
 
   function saveQRCode() {
     svgRef.current?.toDataURL(async (data: string) => {
       await generateQRCode({ filename: name, data });
+
+      onNewQRCodeCreated?.();
     });
 
     onClose();

@@ -13,7 +13,7 @@ import { GenerateModal } from "@/components/Modal/GenerateModal";
 import { QRCodeList } from "@/components/QRCodeList";
 
 export default function HomeScreen() {
-  const { qrCodeList } = useQRCodeList();
+  const { qrCodeList, updateList } = useQRCodeList();
   const [selectedItem, setSelectedItem] =
     React.useState<HomeListItemType | null>(null);
   const [newQRCode, setNewQRCode] = React.useState<OnGeneratePressArgs>({
@@ -35,6 +35,9 @@ export default function HomeScreen() {
     handleGeneralModalClose();
     setNewQRCode(args);
     toggleNewQRCodeSheet();
+  };
+  const onNewQRCodeCreated = () => {
+    updateList();
   };
 
   // This is a shared value that can be used to animate the bottom sheet
@@ -78,6 +81,7 @@ export default function HomeScreen() {
         url={newQRCode.url}
         isOpen={isNewQRCodeSheetOpen}
         onClose={toggleNewQRCodeSheet}
+        onNewQRCodeCreated={onNewQRCodeCreated}
       />
       <PreviewBottomSheet
         isOpen={isPreviewSheetOpen}

@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
-import { HomeListItemType } from "@/app/(tabs)/types";
+import { HomeListItemType } from "@/types";
 import { getQRcodeFiles } from "@/repositories/FileSystem/getQRcodeFiles";
 
-export function useQRCodeList() {
+export function useQRCodeList(): {
+  qrCodeList: HomeListItemType[];
+  updateList: () => void;
+} {
   const [qrCodeList, setQrCodeList] = useState<HomeListItemType[]>([]);
+  const [meaninglessCounter, setMeaninglessCounter] = useState(0);
+
+  function updateList() {
+    setMeaninglessCounter((prev) => prev + 1);
+  }
 
   useEffect(() => {
     (async () => {
@@ -16,9 +24,10 @@ export function useQRCodeList() {
         }))
       );
     })();
-  }, []);
+  }, [meaninglessCounter]);
 
   return {
     qrCodeList,
+    updateList,
   };
 }
