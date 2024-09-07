@@ -20,7 +20,8 @@
           {
             "CFBundleTypeName": "Images",
             "LSHandlerRank": "Owner",
-            "LSItemContentTypes": ["public.image"]
+            "LSItemContentTypes": ["public.image"],
+            "NSDocumentDirectoryUsageDescription": "This app needs access to the document directory to save assets."
           }
         ],
         "NSPhotoLibraryUsageDescription": "We need access to your photo library to allow you to share images within the app."
