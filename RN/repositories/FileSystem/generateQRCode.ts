@@ -1,6 +1,6 @@
 import { maybeCreateRootDir } from "./maybeCreateRootDir";
 import * as RNFS from "react-native-fs";
-import { IMAGE_ASSET_DIR_PATH } from "../../constants/FileSystem";
+import { getImageAssetsDirPath } from "../../constants/FileSystem";
 
 export async function generateQRCode({
   filename,
@@ -10,7 +10,7 @@ export async function generateQRCode({
   data: string;
 }): Promise<void> {
   await maybeCreateRootDir();
-  const filePath = `${IMAGE_ASSET_DIR_PATH}/${filename}.png`;
+  const filePath = `${getImageAssetsDirPath()}/${filename}.png`;
 
   try {
     await RNFS.writeFile(filePath, data, "base64");
