@@ -20,21 +20,19 @@
           {
             "CFBundleTypeName": "Images",
             "LSHandlerRank": "Owner",
-            "LSItemContentTypes": [
-              "public.image"
-            ],
+            "LSItemContentTypes": ["public.image"],
             "NSDocumentDirectoryUsageDescription": "This app needs access to the document directory to save assets."
           }
         ],
-        "NSPhotoLibraryUsageDescription": "We need access to your photo library to allow you to share images within the app."
+        "NSPhotoLibraryUsageDescription": "App needs access to the file system.",
+        "UIFileSharingEnabled": true,
+        "LSSupportsOpeningDocumentsInPlace": true
       },
       "privacyManifests": {
         "NSPrivacyAccessedAPITypes": [
           {
             "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
-            "NSPrivacyAccessedAPITypeReasons": [
-              "C617.1"
-            ]
+            "NSPrivacyAccessedAPITypeReasons": ["C617.1"]
           }
         ]
       }
@@ -56,9 +54,7 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "./assets/fonts/SpaceMono-Regular.ttf"
-          ]
+          "fonts": ["./assets/fonts/SpaceMono-Regular.ttf"]
         }
       ],
       [
