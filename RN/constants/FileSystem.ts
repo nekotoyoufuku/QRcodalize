@@ -13,7 +13,7 @@ function getRootDir(): string {
 
   const splitPath = dirPath.split("/");
   while (splitPath.length > 0) {
-    if (splitPath[splitPath.length - 1] === "data") {
+    if (splitPath[splitPath.length - 1] === "Data") {
       break;
     }
 
