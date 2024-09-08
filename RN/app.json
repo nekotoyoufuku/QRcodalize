@@ -112,6 +112,9 @@
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "owner": "nekotoyoufuku"
+    "owner": "nekotoyoufuku",
+    "updates": {
+      "url": "https://u.expo.dev/2f99ba06-f289-4ad4-a0cc-733bb667b126"
+    }
   }
 }
