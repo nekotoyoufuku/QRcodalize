@@ -20,7 +20,9 @@
           {
             "CFBundleTypeName": "Images",
             "LSHandlerRank": "Owner",
-            "LSItemContentTypes": ["public.image"],
+            "LSItemContentTypes": [
+              "public.image"
+            ],
             "NSDocumentDirectoryUsageDescription": "This app needs access to the document directory to save assets."
           }
         ],
@@ -30,7 +32,9 @@
         "NSPrivacyAccessedAPITypes": [
           {
             "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
-            "NSPrivacyAccessedAPITypeReasons": ["C617.1"]
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
           }
         ]
       }
@@ -52,7 +56,9 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/SpaceMono-Regular.ttf"]
+          "fonts": [
+            "./assets/fonts/SpaceMono-Regular.ttf"
+          ]
         }
       ],
       [
@@ -82,14 +88,30 @@
         "origin": false
       },
       "eas": {
-        "projectId": "662d340a-7440-4dad-a9a6-2590368a137d"
-      }
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "QRcodalizeShareExtension",
+                  "bundleIdentifier": "com.amagin.QRcodalize.ShareExtension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.amagin.QRcodalize"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "2f99ba06-f289-4ad4-a0cc-733bb667b126"
+      },
+      "appleApplicationGroup": "group.com.amagin.QRcodalize"
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "updates": {
-      "url": "https://u.expo.dev/662d340a-7440-4dad-a9a6-2590368a137d"
-    }
+    "owner": "nekotoyoufuku"
   }
 }
