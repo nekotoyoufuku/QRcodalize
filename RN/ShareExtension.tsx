@@ -1,5 +1,5 @@
 import { type InitialProps, close } from "expo-share-extension";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import { createQRCodeFile } from "./repositories/FileSystem/createQRCodeFile";
 import Button from "./components/Button/Button";

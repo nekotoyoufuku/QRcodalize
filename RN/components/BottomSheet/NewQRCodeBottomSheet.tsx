@@ -35,7 +35,7 @@ export function NewQRCodeBottomSheet({
   return (
     <BaseBottomSheet isOpen={isOpen} onClose={onClose}>
       <View style={styles.container}>
-        {url ? <QRCode value={url} getRef={svgRef as any} /> : null}
+        {url ? <QRCode value={url} size={150} getRef={svgRef as any} /> : null}
 
         <Button title="Save QR Code" onPress={saveQRCode} />
       </View>

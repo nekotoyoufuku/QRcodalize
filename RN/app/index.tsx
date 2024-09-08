@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
 
@@ -12,12 +12,14 @@ import { HomeListItemType, OnGeneratePressArgs } from "@/types";
 import { GenerateModal } from "@/components/Modal/GenerateModal";
 import { QRCodeList } from "@/components/QRCodeList";
 import { useAppState } from "@/hooks/useAppState";
+import { useSetupApp } from "@/hooks/useSetupApp";
 
 export default function HomeScreen() {
   const { qrCodeList, updateList } = useQRCodeList();
-  const [selectedItem, setSelectedItem] =
-    React.useState<HomeListItemType | null>(null);
-  const [newQRCode, setNewQRCode] = React.useState<OnGeneratePressArgs>({
+  const [selectedItem, setSelectedItem] = useState<HomeListItemType | null>(
+    null
+  );
+  const [newQRCode, setNewQRCode] = useState<OnGeneratePressArgs>({
     name: "",
     url: "",
   });
@@ -63,6 +65,8 @@ export default function HomeScreen() {
       updateList();
     },
   });
+
+  useSetupApp();
 
   return (
     <>
