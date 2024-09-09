@@ -39,9 +39,6 @@ export default function HomeScreen() {
     setNewQRCode(args);
     toggleNewQRCodeSheet();
   };
-  const onNewQRCodeCreated = () => {
-    updateList();
-  };
 
   // This is a shared value that can be used to animate the bottom sheet
   const isNewQRCodeSheetOpen = useSharedValue(false);
@@ -92,13 +89,14 @@ export default function HomeScreen() {
         url={newQRCode.url}
         isOpen={isNewQRCodeSheetOpen}
         onClose={toggleNewQRCodeSheet}
-        onNewQRCodeCreated={onNewQRCodeCreated}
+        onNewQRCodeCreated={updateList}
       />
       {selectedItem ? (
         <PreviewBottomSheet
           isOpen={isPreviewSheetOpen}
           onClose={togglePreviewSheet}
           selectedItem={selectedItem}
+          onDelete={updateList}
         />
       ) : null}
     </>

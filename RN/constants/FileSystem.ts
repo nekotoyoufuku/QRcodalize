@@ -33,8 +33,6 @@ function getRootDir(): string {
   }
 
   splitPath.push("Application");
-
-  // Fix me
   splitPath.push(uuid!);
   splitPath.push("Documents");
 

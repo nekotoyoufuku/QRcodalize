@@ -4,14 +4,24 @@ import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { breakDownURL } from "@/helpers/breakDownURL";
+import { useThemeColor } from "@/hooks/useThemeColor";
 import { HomeListItemType } from "@/types";
 
 export interface QRCodeListProps {
   data: HomeListItemType[];
   onItemPress: (item: HomeListItemType) => void;
+  lightColor?: string;
+  darkColor?: string;
 }
 
-export function QRCodeList({ data, onItemPress }: QRCodeListProps) {
+export function QRCodeList({
+  data,
+  onItemPress,
+  lightColor,
+  darkColor,
+}: QRCodeListProps) {
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
+
   return (
     <FlatList<HomeListItemType>
       data={data}
@@ -20,7 +30,7 @@ export function QRCodeList({ data, onItemPress }: QRCodeListProps) {
           <ThemedView style={styles.stepContainer}>
             <ThemedText>{breakDownURL(item.title).name}</ThemedText>
 
-            <Entypo name="chevron-right" size={24} color="black" />
+            <Entypo name="chevron-right" size={24} color={color} />
           </ThemedView>
         </TouchableOpacity>
       )}

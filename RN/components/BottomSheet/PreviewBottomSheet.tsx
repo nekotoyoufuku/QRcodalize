@@ -13,6 +13,7 @@ type PreviewBottomSheetProps = {
   isOpen: SharedValue<boolean>;
   selectedItem: HomeListItemType | null;
   onClose: () => void;
+  onDelete?: () => void;
 };
 
 /**
@@ -22,11 +23,12 @@ export default function PreviewBottomSheet({
   isOpen,
   selectedItem,
   onClose,
+  onDelete,
 }: PreviewBottomSheetProps) {
   const handleDeletePress = () => {
     onClose();
-
     deleteFile(selectedItem!.url);
+    onDelete?.();
   };
 
   return (
