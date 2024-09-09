@@ -8,6 +8,7 @@ import TextInputField from "./components/TextInput";
 export default function ShareExtension({ images }: InitialProps) {
   const [text, onChangeText] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
+  const [debugMessage, setDebugMessage] = React.useState("");
 
   function resetForm() {
     onChangeText("");
@@ -30,6 +31,7 @@ export default function ShareExtension({ images }: InitialProps) {
       await createQRCodeFile({
         name: text,
         filepath: images![0],
+        onMessage: (m) => setDebugMessage(m),
       });
 
       resetForm();
@@ -38,7 +40,7 @@ export default function ShareExtension({ images }: InitialProps) {
       // directory in your app group's container. These files are not automatically cleaned up,
       // so you should delete them when you're done with them.
       // await clearAppGroupContainer()
-      close();
+      // close();
     }
   };
 
@@ -47,7 +49,7 @@ export default function ShareExtension({ images }: InitialProps) {
       <TextInputField
         label="Name"
         value={text}
-        errorMessage={errorMessage}
+        errorMessage={errorMessage || debugMessage}
         onChangeText={onChangeText}
       />
       <View style={styles.primaryButtonWrapper}>
