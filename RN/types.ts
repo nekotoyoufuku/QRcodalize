@@ -1,6 +1,6 @@
 export type HomeListItemType = {
   title: string;
-  url: string;
+  base64: string | undefined;
 };
 
 export interface OnGeneratePressArgs {
