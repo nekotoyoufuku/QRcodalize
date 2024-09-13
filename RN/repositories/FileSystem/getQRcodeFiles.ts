@@ -1,29 +1,22 @@
-import * as RNFS from "react-native-fs";
-import { getImageAssetsDirPath } from "../../constants/FileSystem";
-
-import { maybeCreateRootDir } from "./maybeCreateRootDir";
+import {
+  getAllKeysMmkvStorage,
+  getMmkvStorage,
+} from "../../repositories/mmkv/mmkvStorage";
 
 export type IQRCodeFile = {
   name: string;
-  path: string;
+  base64: string | undefined;
 };
 
 export async function getQRcodeFiles(): Promise<IQRCodeFile[]> {
-  await maybeCreateRootDir();
+  const imageKeys = getAllKeysMmkvStorage();
+  const imageBase64 = imageKeys.map((key) => {
+    const base64 = getMmkvStorage(key);
+    return {
+      name: key,
+      base64,
+    };
+  });
 
-  try {
-    const imageAssetsDirPath = getImageAssetsDirPath();
-    const result = await RNFS.readDir(imageAssetsDirPath);
-
-    return result
-      .filter((res) => res.isFile)
-      .map((file) => ({
-        name: file.name,
-        path: file.path,
-      }));
-  } catch (error) {
-    console.error(`getQRcodeFiles: ${error}`);
-
-    return [];
-  }
+  return imageBase64;
 }

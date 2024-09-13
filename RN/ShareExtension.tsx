@@ -1,9 +1,11 @@
-import { type InitialProps, close } from "expo-share-extension";
-import { StyleSheet, View } from "react-native";
 import React from "react";
-import { createQRCodeFile } from "./repositories/FileSystem/createQRCodeFile";
+import { type InitialProps, close } from "expo-share-extension";
+import { Alert, StyleSheet, View } from "react-native";
+import RNFS from "react-native-fs";
+
 import Button from "./components/Button/Button";
 import TextInputField from "./components/TextInput";
+import { setMmkvStorage } from "./repositories/mmkv/mmkvStorage";
 
 export default function ShareExtension({ images }: InitialProps) {
   const [text, onChangeText] = React.useState("");
@@ -26,19 +28,15 @@ export default function ShareExtension({ images }: InitialProps) {
   const handleOpenHostApp = async () => {
     const isValidated = validateInput();
 
-    if (isValidated) {
-      await createQRCodeFile({
-        name: text,
-        filepath: images![0],
+    if (isValidated && images) {
+      RNFS.readFile(images[0], "base64").then((res) => {
+        setMmkvStorage(text, res);
+        Alert.alert("Saved", "QR code saved successfully");
+        console.log("Saved-------->>>");
+
+        resetForm();
+        close();
       });
-
-      resetForm();
-
-      // When you share images and videos, expo-share-extension stores them in a sharedData
-      // directory in your app group's container. These files are not automatically cleaned up,
-      // so you should delete them when you're done with them.
-      // await clearAppGroupContainer()
-      close();
     }
   };
 

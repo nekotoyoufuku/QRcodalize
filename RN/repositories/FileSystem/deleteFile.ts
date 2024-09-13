@@ -1,10 +1,8 @@
-import * as RNFS from "react-native-fs";
+import { deleteMmkvStorage } from "@/repositories/mmkv/mmkvStorage";
 
-export async function deleteFile(
-  filepath: RNFS.UploadFileItem["filepath"]
-): Promise<void> {
+export async function deleteFile(name: string): Promise<void> {
   try {
-    await RNFS.unlink(filepath);
+    deleteMmkvStorage(name);
   } catch (error) {
     console.error(error);
   }

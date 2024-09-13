@@ -12,7 +12,6 @@ import { HomeListItemType, OnGeneratePressArgs } from "@/types";
 import { GenerateModal } from "@/components/Modal/GenerateModal";
 import { QRCodeList } from "@/components/QRCodeList";
 import { useAppState } from "@/hooks/useAppState";
-import { useSetupApp } from "@/hooks/useSetupApp";
 
 export default function HomeScreen() {
   const { qrCodeList, updateList } = useQRCodeList();
@@ -62,8 +61,6 @@ export default function HomeScreen() {
       updateList();
     },
   });
-
-  useSetupApp();
 
   return (
     <>

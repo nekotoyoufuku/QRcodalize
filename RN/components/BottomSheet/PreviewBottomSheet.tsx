@@ -6,7 +6,6 @@ import { ThemedText } from "@/components/ThemedText";
 import { BaseBottomSheet } from "@/components/BottomSheet/BaseBottomSheet";
 import { HomeListItemType } from "@/types";
 import Button from "@/components/Button/Button";
-import { breakDownURL } from "@/helpers/breakDownURL";
 import { deleteFile } from "@/repositories/FileSystem/deleteFile";
 
 type PreviewBottomSheetProps = {
@@ -26,25 +25,27 @@ export default function PreviewBottomSheet({
   onDelete,
 }: PreviewBottomSheetProps) {
   const handleDeletePress = () => {
+    if (selectedItem?.title) {
+      deleteFile(selectedItem?.title);
+      onDelete && onDelete();
+    }
     onClose();
-    deleteFile(selectedItem!.url);
-    onDelete?.();
   };
 
   return (
     <BaseBottomSheet isOpen={isOpen} onClose={onClose}>
       <View style={styles.container}>
-        {selectedItem?.url ? (
+        {selectedItem?.base64 ? (
           <>
             <View style={styles.titleWtapper}>
-              <ThemedText type="title">
-                {breakDownURL(selectedItem.title).name}
-              </ThemedText>
+              <ThemedText type="title">{selectedItem.title}</ThemedText>
             </View>
 
             <View style={styles.imageWrapper}>
               <Image
-                source={{ uri: selectedItem.url }}
+                source={{
+                  uri: `data:image/jpeg;base64,${selectedItem.base64}`,
+                }}
                 style={{ width: 200, height: 200 }}
               />
             </View>
