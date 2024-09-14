@@ -1,32 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
-import { HomeListItemType } from "@/types";
-import { getQRcodeFiles } from "@/repositories/FileSystem/getQRcodeFiles";
+import { useState } from "react";
+import { QRCode } from "@/types";
+import { getQRCodes } from "@/repositories/QRCodeData/getQRCodes";
 
 export function useQRCodeList(): {
-  qrCodeList: HomeListItemType[];
+  qrCodeList: QRCode[];
   updateList: () => void;
 } {
-  const [qrCodeList, setQrCodeList] = useState<HomeListItemType[]>([]);
-
-  useEffect(() => {
-    getQRcodeList();
-  }, []);
+  const [qrCodeList, setQrCodeList] = useState<QRCode[]>(getQRCodes());
 
   function updateList() {
-    getQRcodeList();
+    setQrCodeList(getQRCodes());
   }
-
-  const getQRcodeList = useCallback(async () => {
-    const items = await getQRcodeFiles();
-    const qrCodeListItems = items.map((item) => {
-      return {
-        title: item.name,
-        base64: item.base64,
-      };
-    });
-
-    setQrCodeList(qrCodeListItems);
-  }, []);
 
   return {
     qrCodeList,

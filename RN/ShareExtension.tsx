@@ -1,22 +1,22 @@
 import React from "react";
+import * as RNFS from "react-native-fs";
 import { type InitialProps, close } from "expo-share-extension";
-import { Alert, StyleSheet, View } from "react-native";
-import RNFS from "react-native-fs";
+import { StyleSheet, View } from "react-native";
 
 import Button from "./components/Button/Button";
 import TextInputField from "./components/TextInput";
-import { setMmkvStorage } from "./repositories/mmkv/mmkvStorage";
+import { setQRCode } from "./repositories/QRCodeData/setQRCode";
 
 export default function ShareExtension({ images }: InitialProps) {
-  const [text, onChangeText] = React.useState("");
+  const [name, onNameChange] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
 
   function resetForm() {
-    onChangeText("");
+    onNameChange("");
   }
 
   const validateInput = () => {
-    if (text === "") {
+    if (name === "") {
       setErrorMessage("Name is required");
 
       return false;
@@ -29,14 +29,14 @@ export default function ShareExtension({ images }: InitialProps) {
     const isValidated = validateInput();
 
     if (isValidated && images) {
-      RNFS.readFile(images[0], "base64").then((res) => {
-        setMmkvStorage(text, res);
-        Alert.alert("Saved", "QR code saved successfully");
-        console.log("Saved-------->>>");
+      const data = await RNFS.readFile(images[0], "base64");
 
-        resetForm();
-        close();
+      await setQRCode({
+        name,
+        data,
       });
+      resetForm();
+      close();
     }
   };
 
@@ -44,9 +44,9 @@ export default function ShareExtension({ images }: InitialProps) {
     <View style={styles.container}>
       <TextInputField
         label="Name"
-        value={text}
+        value={name}
         errorMessage={errorMessage}
-        onChangeText={onChangeText}
+        onChangeText={onNameChange}
       />
       <View style={styles.primaryButtonWrapper}>
         <Button title="Save" onPress={handleOpenHostApp} state="default" />

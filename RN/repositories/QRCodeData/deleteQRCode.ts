@@ -1,8 +1,8 @@
 import { deleteMmkvStorage } from "@/repositories/mmkv/mmkvStorage";
 
-export async function deleteFile(name: string): Promise<void> {
+export function deleteQRCode(id: string): void {
   try {
-    deleteMmkvStorage(name);
+    deleteMmkvStorage(id);
   } catch (error) {
     console.error(error);
   }
