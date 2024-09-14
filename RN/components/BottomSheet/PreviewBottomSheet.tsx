@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Alert, Image, StyleSheet, View } from "react-native";
 import { SharedValue } from "react-native-reanimated";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
@@ -26,10 +26,29 @@ export default function PreviewBottomSheet({
 }: PreviewBottomSheetProps) {
   const handleDeletePress = () => {
     if (selectedItem?.id) {
-      deleteQRCode(selectedItem?.id);
+      Alert.alert(
+        "Delete QR Code",
+        "Are you sure you want to delete this QR code?",
+        [
+          {
+            text: "Cancel",
+            style: "cancel",
+          },
+          {
+            text: "Delete",
+            style: "destructive",
+            onPress: () => {
+              deleteQRCode(selectedItem?.id);
+              onDelete && onDelete();
+              onClose();
+            },
+          },
+        ]
+      );
+    } else {
       onDelete && onDelete();
+      onClose();
     }
-    onClose();
   };
 
   return (
