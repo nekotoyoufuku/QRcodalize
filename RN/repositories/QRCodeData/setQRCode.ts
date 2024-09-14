@@ -3,14 +3,16 @@ import { setMmkvStorage } from "../mmkv/mmkvStorage";
 import { QRCode } from "../../types";
 
 export async function setQRCode({
+  id: _id,
   name,
   data,
 }: {
+  id?: string;
   name: string;
   data: string;
 }): Promise<void> {
   try {
-    const id = uuid.v4() as string;
+    const id = _id ?? (uuid.v4() as string);
     const value = {
       name,
       imageInBase64: data,
