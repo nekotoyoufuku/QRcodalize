@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#FAF8F5",
     padding: 30,
+    marginTop: -20,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
   },
   topInner: {},
   primaryButtonWrapper: {
