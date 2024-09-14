@@ -4,13 +4,13 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 import { ThemedText } from "@/components/ThemedText";
 import { BaseBottomSheet } from "@/components/BottomSheet/BaseBottomSheet";
-import { HomeListItemType } from "@/types";
+import { QRCode } from "@/types";
 import Button from "@/components/Button/Button";
-import { deleteFile } from "@/repositories/FileSystem/deleteFile";
+import { deleteQRCode } from "@/repositories/QRCodeData/deleteQRCode";
 
 type PreviewBottomSheetProps = {
   isOpen: SharedValue<boolean>;
-  selectedItem: HomeListItemType | null;
+  selectedItem: QRCode | null;
   onClose: () => void;
   onDelete?: () => void;
 };
@@ -25,8 +25,8 @@ export default function PreviewBottomSheet({
   onDelete,
 }: PreviewBottomSheetProps) {
   const handleDeletePress = () => {
-    if (selectedItem?.title) {
-      deleteFile(selectedItem?.title);
+    if (selectedItem?.id) {
+      deleteQRCode(selectedItem?.id);
       onDelete && onDelete();
     }
     onClose();
@@ -35,16 +35,16 @@ export default function PreviewBottomSheet({
   return (
     <BaseBottomSheet isOpen={isOpen} onClose={onClose}>
       <View style={styles.container}>
-        {selectedItem?.base64 ? (
+        {selectedItem?.imageInBase64 ? (
           <>
             <View style={styles.titleWtapper}>
-              <ThemedText type="title">{selectedItem.title}</ThemedText>
+              <ThemedText type="title">{selectedItem.name}</ThemedText>
             </View>
 
             <View style={styles.imageWrapper}>
               <Image
                 source={{
-                  uri: `data:image/jpeg;base64,${selectedItem.base64}`,
+                  uri: `data:image/jpeg;base64,${selectedItem.imageInBase64}`,
                 }}
                 style={{ width: 200, height: 200 }}
               />

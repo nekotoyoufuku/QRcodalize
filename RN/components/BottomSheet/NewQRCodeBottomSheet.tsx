@@ -3,7 +3,7 @@ import { SharedValue } from "react-native-reanimated";
 import { Button, StyleSheet, View } from "react-native";
 import { BaseBottomSheet } from "@/components/BottomSheet/BaseBottomSheet";
 import QRCode from "react-native-qrcode-svg";
-import { setMmkvStorage } from "@/repositories/mmkv/mmkvStorage";
+import { setQRCode } from "@/repositories/QRCodeData/setQRCode";
 
 type NewQRCodeBottomSheetProps = {
   name: string;
@@ -24,7 +24,7 @@ export function NewQRCodeBottomSheet({
 
   function saveQRCode() {
     svgRef.current?.toDataURL(async (data: string) => {
-      setMmkvStorage(name, data);
+      setQRCode({ name, data });
 
       onNewQRCodeCreated?.();
     });

@@ -8,16 +8,14 @@ import PreviewBottomSheet from "@/components/BottomSheet/PreviewBottomSheet";
 import { NewQRCodeBottomSheet } from "@/components/BottomSheet/NewQRCodeBottomSheet";
 import { PlusButton } from "@/components/Button/PlusButton";
 import { useQRCodeList } from "@/hooks/useQRCodeList";
-import { HomeListItemType, OnGeneratePressArgs } from "@/types";
+import { QRCode, OnGeneratePressArgs } from "@/types";
 import { GenerateModal } from "@/components/Modal/GenerateModal";
 import { QRCodeList } from "@/components/QRCodeList";
 import { useAppState } from "@/hooks/useAppState";
 
 export default function HomeScreen() {
   const { qrCodeList, updateList } = useQRCodeList();
-  const [selectedItem, setSelectedItem] = useState<HomeListItemType | null>(
-    null
-  );
+  const [selectedItem, setSelectedItem] = useState<QRCode | null>(null);
   const [newQRCode, setNewQRCode] = useState<OnGeneratePressArgs>({
     name: "",
     url: "",
@@ -51,7 +49,7 @@ export default function HomeScreen() {
     isPreviewSheetOpen.value = !isPreviewSheetOpen.value;
   };
 
-  const handlePressItem = (item: HomeListItemType) => {
+  const handlePressItem = (item: QRCode) => {
     setSelectedItem(item);
     togglePreviewSheet();
   };
