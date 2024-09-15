@@ -104,7 +104,7 @@ export function WifiModalContent({
         onChangeText={setPassword}
       />
       <HorizontalSpacer height={8} />
-      <Text>engription</Text>
+      <Text>Encryption</Text>
       <HorizontalSpacer height={4} />
       <EncryptionSelectButtons onPress={handleEncriptionPress} />
 
