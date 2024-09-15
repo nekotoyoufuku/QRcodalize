@@ -8,6 +8,7 @@ import {
   GenerateWifiQRCodeStringInput,
 } from "@/helpers/generateWifiQRCodeString";
 import { OnGeneratePressArgs } from "@/types";
+import { HorizontalSpacer } from "../Spacer/HorizontalSpacer";
 
 export interface WifiModalContentProps {
   onGeneratePress?: (args: OnGeneratePressArgs) => void;
@@ -88,26 +89,26 @@ export function WifiModalContent({
         placeholder="Wifi"
         onChangeText={setName}
       />
-      <View style={styles.spacer8} />
+      <HorizontalSpacer height={8} />
       <TextInput
         label="SSID"
         errorMessage={errorMessages.ssid}
         value={ssid}
         onChangeText={setSSID}
       />
-      <View style={styles.spacer8} />
+      <HorizontalSpacer height={8} />
       <TextInput
         label="Password"
         errorMessage={errorMessages.password}
         value={password}
         onChangeText={setPassword}
       />
-      <View style={styles.spacer8} />
+      <HorizontalSpacer height={8} />
       <Text>engription</Text>
-      <View style={styles.spacer4} />
+      <HorizontalSpacer height={4} />
       <EncryptionSelectButtons onPress={handleEncriptionPress} />
 
-      <View style={styles.spacer32} />
+      <HorizontalSpacer height={32} />
 
       <Button
         title="Generate"
@@ -115,7 +116,7 @@ export function WifiModalContent({
         state="default"
         onPress={handleWifiGenerate}
       />
-      <View style={styles.spacer8} />
+      <HorizontalSpacer height={8} />
       <Button
         title="Cancel"
         buttonType="link"
@@ -125,15 +126,3 @@ export function WifiModalContent({
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  spacer4: {
-    height: 4,
-  },
-  spacer8: {
-    height: 8,
-  },
-  spacer32: {
-    height: 32,
-  },
-});

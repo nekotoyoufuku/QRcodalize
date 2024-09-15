@@ -7,6 +7,7 @@ import { BaseBottomSheet } from "@/components/BottomSheet/BaseBottomSheet";
 import { QRCode } from "@/types";
 import Button from "@/components/Button/Button";
 import { deleteQRCode } from "@/repositories/QRCodeData/deleteQRCode";
+import { HorizontalSpacer } from "../Spacer/HorizontalSpacer";
 
 type PreviewBottomSheetProps = {
   isOpen: SharedValue<boolean>;
@@ -50,7 +51,7 @@ export default function PreviewBottomSheet({
               />
             </View>
 
-            <View style={styles.spacer24} />
+            <HorizontalSpacer height={24} />
 
             <Button
               title="Delete"
@@ -62,7 +63,7 @@ export default function PreviewBottomSheet({
         ) : (
           <View style={styles.emptyUrl}>
             <FontAwesome6 name="file-circle-question" size={60} color="black" />
-            <View style={styles.spacer24} />
+            <HorizontalSpacer height={24} />
             <ThemedText>QR code not found</ThemedText>
           </View>
         )}
@@ -80,9 +81,6 @@ const styles = StyleSheet.create({
   },
   imageWrapper: {
     alignItems: "center",
-  },
-  spacer24: {
-    height: 24,
   },
   emptyUrl: {
     height: 200,
