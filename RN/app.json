@@ -79,6 +79,13 @@
     "experiments": {
       "typedRoutes": true
     },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "owner": "nekotoyoufuku",
+    "updates": {
+      "url": "https://u.expo.dev/2f99ba06-f289-4ad4-a0cc-733bb667b126"
+    },
     "extra": {
       "router": {
         "origin": false
@@ -101,16 +108,9 @@
             }
           }
         },
-        "projectId": "2f99ba06-f289-4ad4-a0cc-733bb667b126"
+        "projectId": "9ece8ff8-cd8e-4d60-9d46-a36f4e574f7d"
       },
       "appleApplicationGroup": "group.com.amagin.QRfy"
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "owner": "nekotoyoufuku",
-    "updates": {
-      "url": "https://u.expo.dev/2f99ba06-f289-4ad4-a0cc-733bb667b126"
     }
   }
 }
