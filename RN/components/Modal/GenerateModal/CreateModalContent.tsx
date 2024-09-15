@@ -1,5 +1,5 @@
 import Button from "@/components/Button/Button";
-import { HorizontalSpacer } from "../Spacer/HorizontalSpacer";
+import { HorizontalSpacer } from "@/components/Spacer/HorizontalSpacer";
 
 export interface CreateModalContentProps {
   onPress: (type: "URL" | "Wifi" | null) => void;

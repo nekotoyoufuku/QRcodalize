@@ -1,17 +1,17 @@
-import TextInput from "@/components/TextInput";
-import Button from "@/components/Button/Button";
-import { EncryptionSelectButtons } from "@/components/Button/EncryptionSelectButtons";
-import { StyleSheet, Text, View } from "react-native";
+import { Text } from "react-native";
 import { useState } from "react";
 import {
   generateWifiQRCodeString,
   GenerateWifiQRCodeStringInput,
 } from "@/helpers/generateWifiQRCodeString";
-import { OnGeneratePressArgs } from "@/types";
-import { HorizontalSpacer } from "../Spacer/HorizontalSpacer";
+import TextInput from "@/components/TextInput";
+import Button from "@/components/Button/Button";
+import { EncryptionSelectButtons } from "@/components/Button/EncryptionSelectButtons";
+import { HorizontalSpacer } from "@/components/Spacer/HorizontalSpacer";
+import { GenerateQRCodeInput } from "@/types";
 
 export interface WifiModalContentProps {
-  onGeneratePress?: (args: OnGeneratePressArgs) => void;
+  onGeneratePress?: (input: GenerateQRCodeInput) => void;
   onCancel?: () => void;
 }
 

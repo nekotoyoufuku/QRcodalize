@@ -1,11 +1,11 @@
+import { useState } from "react";
 import TextInput from "@/components/TextInput";
 import Button from "@/components/Button/Button";
-import { useState } from "react";
-import { OnGeneratePressArgs } from "@/types";
-import { HorizontalSpacer } from "../Spacer/HorizontalSpacer";
+import { HorizontalSpacer } from "@/components/Spacer/HorizontalSpacer";
+import { GenerateQRCodeInput } from "@/types";
 
 export interface URLModalContentProps {
-  onGeneratePress?: (args: OnGeneratePressArgs) => void;
+  onGeneratePress?: (input: GenerateQRCodeInput) => void;
   onCancel?: () => void;
 }
 

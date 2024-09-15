@@ -4,7 +4,7 @@ export type QRCode = {
   imageInBase64: string | undefined;
 };
 
-export interface OnGeneratePressArgs {
+export interface GenerateQRCodeInput {
   name: string;
   url: string;
 }
