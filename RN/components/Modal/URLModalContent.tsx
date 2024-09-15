@@ -1,8 +1,8 @@
 import TextInput from "@/components/TextInput";
 import Button from "@/components/Button/Button";
-import { StyleSheet, View } from "react-native";
 import { useState } from "react";
 import { OnGeneratePressArgs } from "@/types";
+import { HorizontalSpacer } from "../Spacer/HorizontalSpacer";
 
 export interface URLModalContentProps {
   onGeneratePress?: (args: OnGeneratePressArgs) => void;
@@ -69,7 +69,7 @@ export function URLModalContent({
         placeholder="Instagram"
         onChangeText={setName}
       />
-      <View style={styles.spacer8} />
+      <HorizontalSpacer height={8} />
       <TextInput
         label="URL"
         value={url}
@@ -78,7 +78,7 @@ export function URLModalContent({
         onChangeText={setURL}
       />
 
-      <View style={styles.spacer32} />
+      <HorizontalSpacer height={32} />
 
       <Button
         title="Generate"
@@ -86,7 +86,7 @@ export function URLModalContent({
         state="default"
         onPress={handleURLGenerate}
       />
-      <View style={styles.spacer8} />
+      <HorizontalSpacer height={8} />
       <Button
         title="Cancel"
         buttonType="link"
@@ -96,12 +96,3 @@ export function URLModalContent({
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  spacer8: {
-    height: 8,
-  },
-  spacer32: {
-    height: 32,
-  },
-});
