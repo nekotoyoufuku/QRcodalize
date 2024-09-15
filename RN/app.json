@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "QRcodalize",
-    "slug": "QRcodalize",
+    "name": "QRfy",
+    "slug": "QRfy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/appIcon.png",
@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.amagin.QRcodalize",
+      "bundleIdentifier": "com.amagin.QRfy",
       "infoPlist": {
         "CFBundleDocumentTypes": [
           {
@@ -89,11 +89,11 @@
             "ios": {
               "appExtensions": [
                 {
-                  "targetName": "QRcodalizeShareExtension",
-                  "bundleIdentifier": "com.amagin.QRcodalize.ShareExtension",
+                  "targetName": "QRfyShareExtension",
+                  "bundleIdentifier": "com.amagin.QRfy.ShareExtension",
                   "entitlements": {
                     "com.apple.security.application-groups": [
-                      "group.com.amagin.QRcodalize"
+                      "group.com.amagin.QRfy"
                     ]
                   }
                 }
@@ -103,7 +103,7 @@
         },
         "projectId": "2f99ba06-f289-4ad4-a0cc-733bb667b126"
       },
-      "appleApplicationGroup": "group.com.amagin.QRcodalize"
+      "appleApplicationGroup": "group.com.amagin.QRfy"
     },
     "runtimeVersion": {
       "policy": "appVersion"
