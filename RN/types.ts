@@ -1,7 +1,7 @@
 export type QRCode = {
   id: string;
   name: string;
-  imageInBase64: string | undefined;
+  imageInBase64: string;
 };
 
 export interface GenerateQRCodeInput {
