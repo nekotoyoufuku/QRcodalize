@@ -15,7 +15,7 @@ type TextInputFieldProps = {
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
   onChangeText?: (text: string) => void;
-};
+} & Omit<TextInput["props"], "value" | "onChangeText">;
 
 export default function TextInputField({
   value,
@@ -24,6 +24,8 @@ export default function TextInputField({
   placeholder,
   style,
   onChangeText,
+  autoCapitalize = "none",
+  ...rest
 }: TextInputFieldProps) {
   return (
     <>
@@ -40,6 +42,8 @@ export default function TextInputField({
           placeholder={placeholder}
           onChangeText={onChangeText}
           value={value}
+          autoCapitalize={autoCapitalize}
+          {...rest}
         />
       </ThemedView>
 
