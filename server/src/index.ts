@@ -1,7 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
 import { createPass } from "./createPass";
 import { downloadPass } from "./downloadPass";
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
