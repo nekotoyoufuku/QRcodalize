@@ -2,29 +2,13 @@ import { Request, Response } from "express";
 import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
+import { createPassData } from "./helper/createPassData";
 
 const parentPath = path.resolve(__dirname, "..");
 const certPath = path.join(parentPath, "certs/passcertificate.pem");
 const keyPath = path.join(parentPath, "certs/privateKey.pem");
 const wwdrPath = path.join(parentPath, "certs/WWDR.pem");
 const imagesPath = path.join(parentPath, "images");
-
-const passData = {
-  formatVersion: 1,
-  passTypeIdentifier: "pass.com.nekotoyoufuku.samplepass",
-  serialNumber: "123456",
-  teamIdentifier: "YOUR_TEAM_ID",
-  organizationName: "nekotoyoufuku",
-  description: "Sample Pass",
-  logoText: "Your Logo",
-  foregroundColor: "rgb(255, 255, 255)",
-  backgroundColor: "rgb(0, 0, 0)",
-  barcode: {
-    format: "PKBarcodeFormatQR",
-    message: "Your message",
-    messageEncoding: "iso-8859-1",
-  },
-};
 
 export async function createPass(_: Request, res: Response) {
   try {
@@ -37,7 +21,7 @@ export async function createPass(_: Request, res: Response) {
     // create pass.json file in sample-pass folder
     fs.writeFileSync(
       path.join(passFolder, "pass.json"),
-      JSON.stringify(passData, null, 2)
+      JSON.stringify(createPassData(), null, 2)
     );
 
     // copy images to pass folder
