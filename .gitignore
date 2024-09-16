@@ -16,3 +16,8 @@ web-build/
 android/
 ios/
 ios/*
+
+# server
+server/certs/*
+server/passes/*
+.env
