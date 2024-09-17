@@ -16,7 +16,7 @@ type ButtonProps = {
   onPress?: () => void;
 };
 
-type ButtonState = "default" | "loading";
+type ButtonState = "default" | "loading" | "disabled";
 
 export default function Button({
   title,
@@ -80,9 +80,14 @@ function PrimaryButton({ title, onPress, state, style }: ButtonProps) {
       </View>
     );
   }
+  const isDisabled = state === "disabled";
 
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.container, isDisabled && styles.disabled, style]}
+      disabled={isDisabled}
+    >
       <ThemedText type="defaultSemiBold" colorType="primaryButtonText">
         {title}
       </ThemedText>
@@ -106,5 +111,8 @@ const styles = StyleSheet.create({
   linkContainer: {
     padding: 12,
     alignItems: "center",
+  },
+  disabled: {
+    backgroundColor: "#d4d4d4",
   },
 });
