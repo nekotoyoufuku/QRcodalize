@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 import Button from "@/components/Button/Button";
 import { BaseModal, BaseModalProps } from "@/components/Modal/BaseModal";
@@ -14,19 +14,20 @@ export interface RenameModalProps
 }
 
 export function RenameModal({
-  id: _id,
-  name: _name,
+  id,
+  name,
   isVisible,
   onRenamed,
   onClose,
 }: RenameModalProps) {
-  const [id, setId] = useState(_id);
-  const [name, setName] = useState(_name);
+  const [text, setText] = useState(name);
   const [errorMessages, setErrorMessages] = useState("");
 
+  useEffect(() => {
+    setText(name);
+  }, [name]);
+
   function reset() {
-    setId(_id);
-    setName(_name);
     setErrorMessages("");
   }
 
@@ -53,7 +54,7 @@ export function RenameModal({
     if (isValidated) {
       renameQRCode({
         id,
-        name,
+        name: text,
       });
 
       reset();
@@ -67,10 +68,10 @@ export function RenameModal({
       <View>
         <TextInput
           label="Name"
-          value={name}
+          value={text}
           errorMessage={errorMessages}
           placeholder="Instagram"
-          onChangeText={setName}
+          onChangeText={setText}
         />
 
         <HorizontalSpacer height={32} />
@@ -78,7 +79,7 @@ export function RenameModal({
         <Button
           title="Save"
           buttonType="primary"
-          state="default"
+          state={text.length <= 0 ? "disabled" : "default"}
           onPress={handleSave}
         />
 
