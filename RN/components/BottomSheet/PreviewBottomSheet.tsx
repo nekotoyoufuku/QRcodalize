@@ -93,13 +93,13 @@ export function PreviewBottomSheet({
           onPress={onRename}
         />
         <HorizontalSpacer height={8} />
-        <Button
+        {/* <Button
           title="Add to wallet"
           buttonType="link"
           state={"default"}
           onPress={handleAddToWallet}
         />
-        <HorizontalSpacer height={8} />
+        <HorizontalSpacer height={8} /> */}
         <Button
           title="Delete"
           buttonType="link"
