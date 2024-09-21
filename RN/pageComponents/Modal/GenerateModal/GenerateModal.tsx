@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { BaseModal, BaseModalProps } from "@/components/Modal/BaseModal";
-import { CreateModalContent } from "@/components/Modal/GenerateModal/CreateModalContent";
-import { NewQRCodeModalContent } from "@/components/Modal/GenerateModal//NewQRCodeModalContent";
-import { URLModalContent } from "@/components/Modal/GenerateModal/URLModalContent";
-import { WifiModalContent } from "@/components/Modal/GenerateModal/WifiModalContent";
+import { CreateModalContent } from "@/pageComponents/Modal/GenerateModal/CreateModalContent";
+import { NewQRCodeModalContent } from "@/pageComponents/Modal/GenerateModal//NewQRCodeModalContent";
+import { URLModalContent } from "@/pageComponents/Modal/GenerateModal/URLModalContent";
+import { WifiModalContent } from "@/pageComponents/Modal/GenerateModal/WifiModalContent";
 import { GenerateQRCodeInput } from "@/types";
 
 export type ContentType = "URL" | "Wifi" | "QRCode" | null;
