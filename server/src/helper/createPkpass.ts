@@ -1,29 +1,34 @@
-import { Request, Response } from "express";
 import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
-import { createPassData } from "./helper/createPassData";
+import { createPassData } from "./createPassData";
 import { v4 as uuid } from "uuid";
 
-const parentPath = path.resolve(__dirname, "..");
+const parentPath = path.resolve(__dirname, "../../");
 const certPath = path.join(parentPath, "certs/passcertificate.pem");
 const keyPath = path.join(parentPath, "certs/privateKey.pem");
 const wwdrPath = path.join(parentPath, "certs/WWDR.pem");
 const imagesPath = path.join(parentPath, "images");
 
-export async function createPass(_: Request, res: Response) {
+export interface CreatePkpassInput {
+  name: string;
+}
+
+export function createPkpass({ name }: CreatePkpassInput): string {
+  const id = uuid();
+
   try {
-    // create sample-pass folder
-    const passFolder = path.join(parentPath, "passes", "sample-pass");
+    // Create folder
+    const passFolder = path.join(parentPath, "passes", id);
     if (!fs.existsSync(passFolder)) {
       fs.mkdirSync(passFolder, { recursive: true });
     }
 
-    // create pass.json file in sample-pass folder
+    // Create pass.json file in sample-pass folder
     const passData = createPassData({
       // TODO: Fix me
-      serialNumber: uuid(),
-      name: "name",
+      serialNumber: id,
+      name,
       message: "message",
       description: "description",
     });
@@ -32,7 +37,7 @@ export async function createPass(_: Request, res: Response) {
       JSON.stringify(passData, null, 2)
     );
 
-    // copy images to pass folder
+    // Copy images to pass folder
     fs.copyFileSync(
       path.join(imagesPath, "icon.png"),
       path.join(passFolder, "icon.png")
@@ -42,24 +47,32 @@ export async function createPass(_: Request, res: Response) {
       path.join(passFolder, "logo.png")
     );
 
-    // zip passes/sample-pass.zip
-    const zipFilePath = path.join(parentPath, "passes", "sample-pass.zip");
+    // Zip passes/<id>.zip
+    const zipFilePath = path.join(parentPath, "passes", `${id}.zip`);
     execSync(`zip -r ${zipFilePath} .`, { cwd: passFolder });
 
     // Sign files with openssl
-    const pkpassFilePath = path.join(
-      parentPath,
-      "passes",
-      "sample-pass.pkpass"
-    );
+    const pkpassFilePath = path.join(parentPath, "passes", `${id}.pkpass`);
+    const pkpassFilePath2 = path.join(parentPath, "passes", `Event.pkpass`);
     execSync(
       `openssl smime -sign -in ${zipFilePath} -out ${pkpassFilePath} -signer ${certPath} -inkey ${keyPath} -certfile ${wwdrPath} -outform DER`
     );
 
-    res.json({ success: true, passPath: `/download-pass/sample-pass.pkpass` });
+    const pkpass = fs.readFileSync(pkpassFilePath2);
+    const pkpassInBase64 = Buffer.from(pkpass).toString("base64");
+
+    // Remove folder
+    fs.rmSync(passFolder, { recursive: true, force: true });
+    // Remove zip file
+    fs.unlinkSync(zipFilePath);
+    // Remove pkfile file
+    fs.unlinkSync(pkpassFilePath);
+
+    return pkpassInBase64;
   } catch (error) {
     console.error("Error creating pass:", error);
-
-    res.status(500).json({ success: false, message: "Failed to create pass" });
   }
+
+  // TODO: fix me
+  return "";
 }

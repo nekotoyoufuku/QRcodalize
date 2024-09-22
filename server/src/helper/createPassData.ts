@@ -1,7 +1,16 @@
-import { v4 as uuid } from "uuid";
+export interface CreatePassDateInput {
+  serialNumber: string;
+  name: string;
+  message: string;
+  description: string;
+}
 
-export function createPassData(): Record<string, any> {
-  const serialNumber = uuid();
+export function createPassData({
+  serialNumber,
+  name,
+  message,
+  description,
+}: CreatePassDateInput): Record<string, any> {
   const env = process.env;
   const passTypeIdentifier = env.PASS_TYPE_IDENTIFIER;
   const teamIdentifier = env.TEAM_IDENTIFIER;
@@ -17,16 +26,13 @@ export function createPassData(): Record<string, any> {
     serialNumber,
     teamIdentifier,
     organizationName,
-    // TODO: fix me
-    description: "Description here",
-    // TODO: fix me
-    logoText: "Logo Text here",
+    description,
+    logoText: name,
     foregroundColor: "rgb(255, 255, 255)",
     backgroundColor: "rgb(0, 0, 0)",
     barcode: {
       format: "PKBarcodeFormatQR",
-      // TODO: fix me
-      message: "Your message",
+      message,
       // TODO: fix me
       messageEncoding: "iso-8859-1",
     },
