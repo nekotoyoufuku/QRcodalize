@@ -1,22 +1,27 @@
 import { useState } from "react";
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-export interface EncryptionSelectButtonsProps {
-  onPress?: (encryptionType: "WPA" | "WEP") => void;
+type SwitchType = "left" | "right";
+export interface SwitchButtonProps<T extends string, U extends string> {
+  leftLabel: T;
+  rightLabel: U;
+  onPress: (type: T | U) => void;
 }
 
-export function EncryptionSelectButtons({
+export function SwitchButton<T extends string, U extends string>({
+  leftLabel,
+  rightLabel,
   onPress,
-}: EncryptionSelectButtonsProps) {
-  const [selected, setSelected] = useState<"left" | "right">("left");
+}: SwitchButtonProps<T, U>) {
+  const [selected, setSelected] = useState<SwitchType>("left");
 
   function handleWPAPress() {
     setSelected("left");
-    onPress?.("WPA");
+    onPress(leftLabel);
   }
   function handleWEPPress() {
     setSelected("right");
-    onPress?.("WEP");
+    onPress(rightLabel);
   }
 
   return (
@@ -35,7 +40,7 @@ export function EncryptionSelectButtons({
             selected === "left" ? styles.selectedText : styles.unselectedText,
           ]}
         >
-          WPA
+          {leftLabel}
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -52,7 +57,7 @@ export function EncryptionSelectButtons({
             selected === "right" ? styles.selectedText : styles.unselectedText,
           ]}
         >
-          WEP
+          {rightLabel}
         </Text>
       </TouchableOpacity>
     </View>

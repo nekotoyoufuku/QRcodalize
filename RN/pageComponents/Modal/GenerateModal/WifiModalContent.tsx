@@ -6,7 +6,7 @@ import {
 } from "@/helpers/generateWifiQRCodeString";
 import TextInput from "@/components/TextInput";
 import Button from "@/components/Button/Button";
-import { EncryptionSelectButtons } from "@/pageComponents/Button/EncryptionSelectButtons";
+import { SwitchButton } from "@/components/Button/SwitchButton";
 import { HorizontalSpacer } from "@/components/Spacer/HorizontalSpacer";
 import { GenerateQRCodeInput } from "@/types";
 
@@ -106,7 +106,11 @@ export function WifiModalContent({
       <HorizontalSpacer height={8} />
       <Text>Encryption</Text>
       <HorizontalSpacer height={4} />
-      <EncryptionSelectButtons onPress={handleEncriptionPress} />
+      <SwitchButton
+        leftLabel="WPA"
+        rightLabel="WEP"
+        onPress={handleEncriptionPress}
+      />
 
       <HorizontalSpacer height={32} />
 
