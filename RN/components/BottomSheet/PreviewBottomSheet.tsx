@@ -1,5 +1,7 @@
+import axios from "axios";
 import { Alert, Image, StyleSheet, View } from "react-native";
 import { SharedValue } from "react-native-reanimated";
+import PassKit from "react-native-passkit-wallet";
 
 import { ThemedText } from "@/components/ThemedText";
 import { BaseBottomSheet } from "@/components/BottomSheet/BaseBottomSheet";
@@ -7,6 +9,7 @@ import Button from "@/components/Button/Button";
 import { HorizontalSpacer } from "@/components/Spacer/HorizontalSpacer";
 import { QRCode } from "@/types";
 import { deleteQRCode } from "@/repositories/QRCodeData/deleteQRCode";
+import { createEncodedPkpass } from "@/repositories/async/createEncodedPkpass";
 
 type PreviewBottomSheetProps = {
   isOpen: SharedValue<boolean>;
@@ -29,11 +32,28 @@ export function PreviewBottomSheet({
   onRename,
   onDelete,
 }: PreviewBottomSheetProps) {
+  const handleAddToWallet = async () => {
+    try {
+      const base64Encoded = await createEncodedPkpass({
+        pkpassName: item.name,
+      });
+
+      if (!(await PassKit.canAddPasses())) {
+        throw new Error("canAddPasses is false");
+      }
+
+      await PassKit.addPass(base64Encoded);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleDeleteInAlertPress = () => {
     deleteQRCode(item.id);
     onDelete();
     onClose();
   };
+
   const handleDeletePress = () => {
     Alert.alert(ALERT_TITLE, ALERT_MESSAGE, [
       {
@@ -73,6 +93,13 @@ export function PreviewBottomSheet({
           onPress={onRename}
         />
         <HorizontalSpacer height={8} />
+        {/* <Button
+          title="Add to wallet"
+          buttonType="link"
+          state={"default"}
+          onPress={handleAddToWallet}
+        />
+        <HorizontalSpacer height={8} /> */}
         <Button
           title="Delete"
           buttonType="link"
