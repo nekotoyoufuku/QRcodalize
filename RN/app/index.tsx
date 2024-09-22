@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
-
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { PreviewBottomSheet } from "@/components/BottomSheet/PreviewBottomSheet";
 import { PlusButton } from "@/components/Button/PlusButton";
-import { GenerateModal } from "@/components/Modal/GenerateModal/GenerateModal";
-import { QRCodeList } from "@/components/QRCodeList";
+import { PreviewBottomSheet } from "@/pageComponents/BottomSheet/PreviewBottomSheet";
+import { GenerateModal } from "@/pageComponents/Modal/GenerateModal/GenerateModal";
+import { RenameModal } from "@/pageComponents/Modal/RenameModal";
+import { QRCodeList } from "@/pageComponents/QRCodeList";
 import { useQRCodeList } from "@/hooks/useQRCodeList";
 import { useAppState } from "@/hooks/useAppState";
 import { QRCode } from "@/types";
-import { RenameModal } from "@/components/Modal/RenameModal";
 
 export default function HomeScreen() {
   const { qrCodeList, updateList } = useQRCodeList();

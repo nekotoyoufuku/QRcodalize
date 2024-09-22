@@ -6,7 +6,7 @@ import {
 } from "@/helpers/generateWifiQRCodeString";
 import TextInput from "@/components/TextInput";
 import Button from "@/components/Button/Button";
-import { EncryptionSelectButtons } from "@/components/Button/EncryptionSelectButtons";
+import { EncryptionSelectButtons } from "@/pageComponents/Button/EncryptionSelectButtons";
 import { HorizontalSpacer } from "@/components/Spacer/HorizontalSpacer";
 import { GenerateQRCodeInput } from "@/types";
 
