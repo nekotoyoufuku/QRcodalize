@@ -12,7 +12,7 @@ export interface CreateEncodedPkpassInput {
 export async function createEncodedPkpass({
   pkpassName,
 }: CreateEncodedPkpassInput): Promise<string> {
-  const url = `${process.env.BACKEND_URL}/create-encoded-pkpass/${pkpassName}.pkpass`;
+  const url = `${process.env.BACKEND_URL}/create-encoded-pkpass/${pkpassName}`;
 
   try {
     const response = await axios<ApiResponse>(url, {
@@ -28,6 +28,8 @@ export async function createEncodedPkpass({
 
     return response.data.pkpass;
   } catch (error) {
+    console.log("error", error);
+
     throw new Error(error as any);
   }
 }

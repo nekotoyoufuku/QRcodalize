@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Alert, Image, StyleSheet, View } from "react-native";
 import { SharedValue } from "react-native-reanimated";
 import PassKit from "react-native-passkit-wallet";
@@ -38,13 +37,17 @@ export function PreviewBottomSheet({
         pkpassName: item.name,
       });
 
+      console.log("================");
+      console.log(base64Encoded);
+      console.log("================");
+
       if (!(await PassKit.canAddPasses())) {
         throw new Error("canAddPasses is false");
       }
 
       await PassKit.addPass(base64Encoded);
     } catch (error) {
-      console.error(error);
+      console.error(JSON.stringify(error));
     }
   };
 
@@ -93,13 +96,13 @@ export function PreviewBottomSheet({
           onPress={onRename}
         />
         <HorizontalSpacer height={8} />
-        {/* <Button
+        <Button
           title="Add to wallet"
           buttonType="link"
           state={"default"}
           onPress={handleAddToWallet}
         />
-        <HorizontalSpacer height={8} /> */}
+        <HorizontalSpacer height={8} />
         <Button
           title="Delete"
           buttonType="link"

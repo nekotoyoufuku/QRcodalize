@@ -20,6 +20,7 @@ export async function createEncodedPkpass(req: Request, res: Response) {
 
     res.status(200).json({ success: true, pkpass });
   } catch (error) {
+    console.log("server error", error);
     res.status(500).json({ success: false, message: error });
   }
 }

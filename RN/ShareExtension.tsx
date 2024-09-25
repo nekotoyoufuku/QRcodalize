@@ -7,9 +7,9 @@ import Button from "./components/Button/Button";
 import TextInputField from "./components/TextInput";
 import { setQRCode } from "./repositories/QRCodeData/setQRCode";
 
-export default function ShareExtension({ images }: InitialProps) {
-  const [name, onNameChange] = React.useState("");
-  const [errorMessage, setErrorMessage] = React.useState("");
+export default function ShareExtension({ images, text, url }: InitialProps) {
+  const [name, onNameChange] = React.useState(`${images?.[0]}`);
+  const [errorMessage, setErrorMessage] = React.useState(url);
 
   function resetForm() {
     onNameChange("");
