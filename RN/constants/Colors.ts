@@ -18,6 +18,7 @@ export const Colors = {
     plusIconBackgound: "#687076",
     tabIconDefault: "#687076",
     tabIconSelected: tintColorLight,
+    iconButton: "#3C3C434D",
   },
   dark: {
     text: "#ECEDEE",
@@ -30,5 +31,6 @@ export const Colors = {
     plusIconBackgound: "#fff",
     tabIconDefault: "#9BA1A6",
     tabIconSelected: tintColorDark,
+    iconButton: "#3C3C434D",
   },
 };
