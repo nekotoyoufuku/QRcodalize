@@ -7,7 +7,7 @@ import { PlusButton } from "@/components/Button/PlusButton";
 import { PreviewBottomSheet } from "@/pageComponents/BottomSheet/PreviewBottomSheet";
 import { GenerateModal } from "@/pageComponents/Modal/GenerateModal/GenerateModal";
 import { RenameModal } from "@/pageComponents/Modal/RenameModal";
-import { QRCodeList } from "@/pageComponents/QRCodeList";
+import { QRCodeList } from "@/pageComponents/QRcodeList/QRCodeList";
 import { useQRCodeList } from "@/hooks/useQRCodeList";
 import { useAppState } from "@/hooks/useAppState";
 import { QRCode } from "@/types";
